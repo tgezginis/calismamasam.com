@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css?family=Lora|Open+Sans|Josefin+Sans:300,400,700&subset=latin-ext');
+
+// Desktop
+body {
+  display: block !important;
+  background: #fff;
+  overflow-x: hidden;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1em !important;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  webkit-tap-highlight-color: #f50057;
+  color: #37474F !important;
+}
+
+h1 {
+  font-size: 42px !important;
+  font-family: 'Josefin Sans' !important;
+  color: #37474F !important;
+}
+
+.clear {
+  clear: both;
+}
+
+.text-muted {
+  color: #777;
+}
+
+.text-primary {
+  color: #f50057;
+}
+
+.row-no-padding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.75;
+
+  &.large {
+    font-size: 16px;
+  }
+}
+
+a {
+  outline: 0;
+  color: #37474F;
+
+  &.active,
+  &:active,
+  &:focus,
+  &:hover {
+    color: #37474F;
+    outline: 0;
+    text-decoration: underline;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.img-centered {
+  margin: 0 auto;
+}
+
+.img-bordered {
+  width: 95%;
+  background-color: #FCE188;
+  padding: 1px 0 20px;
+  position: relative;
+  margin: 15px 0 0 18px;
+
+  img {
+    margin: -15px 0 0 -18px;
+  }
+}
+
+img.full-radius {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  margin: 10px 0;
+}
+
+#disqus_thread {
+  margin-top: 50px;
+}
+
+.bg-light-gray {
+  background-color: #f7f7f7;
+}
+
+.bg-darkest-gray {
+  background-color: #222;
+}
+
+::-moz-selection,
+::selection {
+  text-shadow: none;
+  background: #f50057;
+}
+
+img {
+  &::-moz-selection,
+  &::selection {
+    background: 0 0;
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px !important;
+  }
+
+  section.container {
+    padding: 0;
+    margin: 0;
+  }
+
+  #main-container {
+    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row {
+    margin: 0;
+  }
+}
+
+// Tablet
+@media (min-width: 768px) {
+  section.container {
+    padding: 0 0 50px;
+
+    h1 {
+      margin: 20px 0;
+    }
+  }
+
+  .navbar-default {
+    background-color: #fff;
+    border-bottom: none;
+    padding: 0;
+    margin: 0;
+
+    .navbar-brand {
+      font-size: 2em;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+
+    .navbar-nav > .active > a {
+      border-radius: 3px;
+    }
+
+    &.navbar-shrink {
+      padding: 10px 0;
+
+      .navbar-brand {
+        font-size: 1.5em;
+      }
+
+      .navbar-nav {}
+    }
+  }
+}

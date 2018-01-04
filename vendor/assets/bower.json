@@ -1,0 +1,11 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "smart-underline": "latest",
+    "components-font-awesome": "latest"
+  },
+  "devDependencies": {
+    "chai": "~3.4.2",
+    "mocha": "~2.3.4"
+  }
+}

@@ -1,0 +1,99 @@
+<%= content_for :html_title, @post.title %>
+<%= content_for :html_description, @post.description unless @post.description.nil? || @post.description == '' %>
+<%= content_for :html_twitter_description, @post.job_and_company %>
+<%= content_for :html_meta_image, @post.image(:full) %>
+<% @liked = current_user.present? ? @post.liked?(current_user) : false %>
+
+<% cache ["post", @post.id, @post.updated_at, @post.categories, @post.fetch_post_images, current_user&.id, @liked] do %>
+  <div class="row post-page">
+    <article class="post col-md-10 col-md-offset-1 container">
+      <h1><%= @post.title %></h1>
+      <h2 class="post-job"><%= @post.job_and_company %></h2>
+      <p class="post-date"><%= l @post.published_at, format: :short %></p>
+
+      <figure>
+        <%= image_tag(@post.image(:normal), data: {src: @post.image(:full)}, class: 'post-image lazyload blur-up', alt: @post.title, title: @post.title) %>
+      </figure>
+
+      <div>
+        <div class="pull-right twitter-panel">
+          <% unless @post.twitter_url.nil? || @post.twitter_url == '' %>
+            <%= link_to @post.twitter_url, target: '_blank', onclick: "ga('send', 'event', 'post-page-links', 'twitter-url', '#{@post.twitter_url.gsub("https://twitter.com/", "")}');" do %>
+              <span class="post-twitter">
+                <i class="fa fa-twitter"></i>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="pull-left like-panel">
+          <div>
+            <% if current_user.present? %>
+              <% if @liked %>
+                <%= link_to unlike_post_path(@post, token: current_user.token), remote: true, class: 'active' do %>
+                  <i class="fa fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= link_to like_post_path(@post, token: current_user.token), remote: true do %>
+                  <i class="fa fa-heart"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <a href="javascript:likeLogin();"><i class="fa fa-heart"></i></a>
+            <% end %>
+          </div>
+          <div class="likes-count">
+            <% if @post.likes_count > 0 %>
+              <%= @post.likes_count %> kişi beğendi
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="post-body">
+        <% body = @post.body.split("## Hangi yazılımları kullanıyorsun?") %>
+        <%= markdown body[0] %>
+
+        <% if @post.fetch_post_images.count > 0 %>
+          <div class="images-panel">
+            <% if @post.fetch_post_images.any? %>
+              <div class="slider">
+                <% @post.fetch_post_images.each do |image| %>
+                  <div>
+                    <a href="<%= image.image(:original) %>" target="_blank">
+                      <%= image_tag image.image(:full), class: 'post-inline-image', alt: @post.title, title: @post.title %>
+                    </a>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= markdown ["## Hangi yazılımları kullanıyorsun?", body[1]].join %>
+
+        <% unless @post.video_url.nil? || @post.video_url == '' %>
+          <div class="video-panel">
+            <div class="video-title">Ek olarak Doğukan Güven Nomak'ın düzenlediği <a href="https://www.youtube.com/playlist?list=PLAttZmBpvaDwb4gGpLlLiiNh0h_A91Kvp" target="_blank" onclick="ga('send', 'event', 'post-page-links', 'gelistirici-sohbetleri-url', '<%= @post.title %>'">Geliştirici ve Tasarımcı Sohbetleri</a> röportajını da izleyebilirsiniz;</div>
+            <%= VideoPlayer::player(@post.video_url, "800", "450", false).html_safe %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= render 'stats' %>
+      <%= render 'social_buttons' %>
+    </article>
+
+    <%= render 'shared/subscribe_form' %>
+
+    <div id="disqus_thread" class="col-md-8 col-md-offset-2"></div>
+    <script>
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//calismamasam.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+<% end %>

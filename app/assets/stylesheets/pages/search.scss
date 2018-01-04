@@ -1,0 +1,70 @@
+.search-button {
+  font-size: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: none;
+  z-index: 999;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  height: 60px;
+  padding: 10px 0;
+  input {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    font-size: 20px;
+    border: none;
+    &:focus{
+      outline: none;
+    }
+  }
+  .cancel-button {
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+.search {
+  padding: 20px 0 0;
+  h1 {
+    text-align: center;
+    font-size: 20px;
+  }
+  ul {
+    li {
+      font-size: 16px;
+      padding: 10px 0;
+    }
+  }
+  div.post-count {
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+  }
+}
+
+.algolia-logo {
+  position: absolute;
+  right: 10px;
+  width: 70px;
+  opacity: .3;
+  margin-top: 20px;
+  img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .algolia-logo {
+    width: 50px;
+  }
+}

@@ -1,0 +1,6 @@
+<ol class="breadcrumb">
+  <% @product.category.path.each do |category| %>
+    <li><%= link_to category.title, stats_path(id: category.slug) %></li>
+  <% end %>
+  <li class="active"><%= @product.name_with_brand %></li>
+</ol>

@@ -1,0 +1,57 @@
+// Desktop
+.user-panel {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  z-index: 1;
+
+  img {
+    border-radius: 50%;
+    width: 36px;
+  }
+
+  .popover {
+    top: 44px !important;
+    box-shadow: none !important;
+
+    .popover-content {
+      padding: 5px 7px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      min-width: 100px;
+      padding: 3px 0;
+      font-size: 12px;
+      text-align: center;
+
+      a {
+        color: #484848;
+      }
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  .user-panel {
+    right: 70px;
+    top: 19px;
+
+    img {
+      width: 24px !important;
+    }
+
+    .popover {
+      top: 30px !important;
+    }
+  }
+}
+
+
+// Tablet

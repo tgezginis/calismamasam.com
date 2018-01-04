@@ -1,0 +1,26 @@
+<div class="row">
+  <article class="galleries">
+    <h1>Galeri</h1>
+
+    <div class="gallery-form">
+      <h3>Çalışma Masanı Gönder</h3>
+      <%= render 'form' %>
+    </div>
+  </article>
+</div>
+
+<% if @gallery.errors.any? %>
+  <% message = "Lütfen form alanlarını doldurarak tekrar deneyin." %>
+  <% message = @gallery.errors.full_messages.join('\n') %>
+  <script type="text/javascript">
+  $(document).on('ready', function () {
+    sweetAlert({
+      type: "error",
+      title: "Hata",
+      text: "<%= message %>",
+      confirmButtonColor: '#00d888',
+      confirmButtonText: "Tamam"
+    });
+  });
+  </script>
+<% end %>

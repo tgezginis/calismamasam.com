@@ -1,0 +1,29 @@
+<%= content_for :html_title, @category.title %>
+
+<% cache ["category", params[:page], @category.id, @category.updated_at, Post.active.maximum(:updated_at), Post.active.maximum(:published_at)] do %>
+  <% posts = @category.posts.active.page(params[:page] || 1).per(20)  %>
+  <div class="row">
+    <article class="category col-md-10 col-md-offset-1">
+      <h1><%= @category.title %></h1>
+      <% if posts.any? %>
+        <div class="post-count"><%= posts.total_count %> röportaj</div>
+      <% end %>
+    </article>
+
+    <div class="col-md-12">
+      <% posts.each do |post| %>
+        <%= render partial: 'posts/small_post', locals: { post: post, dual: true } %>
+      <% end %>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <% if posts.total_pages > 0 %>
+      <div class="pagination-container col-md-10 col-md-offset-1">
+        <%= paginate posts %>
+      </div>
+    <% end %>
+
+    <%= render 'shared/subscribe_form' %>
+  </div>
+<% end %>

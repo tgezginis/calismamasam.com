@@ -1,0 +1,8 @@
+<% if @like.errors.any? %>
+  swal({ type: "error", title: "Hata", text: "Daha önce puan verdiniz.", confirmButtonColor: '#00d888', confirmButtonText: "Tamam" });
+<% else %>
+  var link = $('.like-panel a');
+  link.addClass('active');
+  link.attr('href', link.attr('href').replace('like', 'unlike'));
+<% end %>
+$('.like-panel .likes-count').html('<%= @likes_count %> kişi beğendi');

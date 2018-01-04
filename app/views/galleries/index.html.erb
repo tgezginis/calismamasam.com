@@ -1,0 +1,19 @@
+<%= content_for :html_title, 'Galeri' %>
+
+<% cache ["galleries", Gallery.maximum(:updated_at)] do %>
+  <div class="row">
+    <article class="galleries">
+      <h1>Galeri</h1>
+
+      <div class="gallery-buttons">
+        <%= link_to 'Çalışma Masanı Gönder', new_gallery_path, class: 'btn btn-primary' %>
+      </div>
+
+      <div class="gallery-list grid">
+        <% Gallery.active.includes(:gallery_images).each do |gallery| %>
+          <%= render partial: 'galleries/gallery', locals: { gallery: gallery } %>
+        <% end %>
+      </div>
+    </article>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<% row_class = "col-xs-6 dual-post" if dual == true %>
+<% row_class = "col-md-3 col-xs-6" if dual == false %>
+
+<% cache ["small-post", post.id, post.updated_at, row_class] do %>
+  <% job_and_company = post.company.present? ? "#{post.job_title} @ #{post.company}" : post.job_title %>
+  <article class="post small-post <%= row_class %>">
+    <figure>
+      <a href="<%= post_path(post.slug) %>" onclick="ga('send', 'event', 'post-links', '<%= post.title %>');">
+        <%= image_tag(post.image(:normal), data: {src: post.image(:full)}, class: 'post-image lazyload blur-up', alt: post.title, title: post.title) %>
+      </a>
+    </figure>
+    <div class="post-info">
+      <h3>
+        <a href="<%= post_path(post.slug) %>" onclick="ga('send', 'event', 'post-links', '<%= post.title %>');">
+          <%= post.title %>
+        </a>
+      </h3>
+      <span class="post-title"><%= job_and_company %></span>
+      <p class="post-description hidden-xs"><%= truncate post.description, length: 120 %></p>
+    </div>
+  </article>
+<% end %>

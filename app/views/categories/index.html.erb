@@ -1,0 +1,22 @@
+<%= content_for :html_title, 'Kategoriler' %>
+
+<% cache ["categories", Category.maximum(:updated_at)] do %>
+  <% categories = Category.all.order(title: :asc) %>
+  <div class="row">
+    <article class="categories col-xs-10 col-xs-offset-1">
+      <h1>Kategoriler</h1>
+      <div class="row">
+        <% categories.each do |category| %>
+          <% next unless category.posts.active.any? %>
+          <div class="col-md-4 col-xs-6">
+            <a href="<%= category_path(category) %>" onclick="ga('send', 'event', 'category-links', '<%= category.title %>');">
+              <%= category.title %>
+            </a>
+            <br>
+            <span><%= category.posts.active.count %> röportaj</span>
+          </div>
+        <% end %>
+      </div>
+    </article>
+  </div>
+<% end %>

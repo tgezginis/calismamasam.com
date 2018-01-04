@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% title = !(html_title = yield :html_title).blank? ? "#{html_title} - #{Settings.title}" : Settings.title %>
+  <% description = !(html_description = yield :html_description).blank? ? html_description : Settings.description %>
+  <% twitter_description = !(html_twitter_description = yield :html_twitter_description).blank? ? html_twitter_description : description %>
+  <% keywords = !(html_keywords = yield :html_keywords).blank? ? html_keywords : Settings.keywords %>
+  <% meta_image = !(html_meta_image = yield :html_meta_image).blank? ? html_meta_image : "https://calismamasam.com/logo-centered.png" %>
+
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="description" content="<%= description %>">
+  <meta name="author" content="Tolga Gezginiş">
+  <meta name="keywords" content="<%= !(html_keywords = yield :html_keywords).blank? ? html_keywords : Settings.keywords %>">
+
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="<%= title %>" />
+  <meta property="og:description" content="<%= description %>" />
+  <meta property="og:url" content="<%= url_for(:only_path => false) %>" />
+  <meta property="og:site_name" content="Çalışma Masam" />
+  <meta property="og:image" content="<%= meta_image %>" />
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="<%= title %>"/>
+  <meta name="twitter:description" content="<%= twitter_description %>"/>
+  <meta name="twitter:site" content="@calismamasamcom"/>
+  <meta name="twitter:image" content="<%= meta_image %>"/>
+  <meta name="twitter:creator" content="@tgezginis"/>
+
+  <link rel="alternate" type="application/rss+xml" title="Çalışma Masam RSS Feed" href="https://calismamasam.com/feed?format=rss">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P977BXZ');</script>
+  <!-- End Google Tag Manager -->
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render partial: 'shared/user' %>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Menü</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to image_tag('logo.svg', title: Settings.description, alt: Settings.description), root_path, id: 'logo-button', class: 'visible-xs' %>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="search-bar">
+          <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+              <input id="search-input" type="text" value="<%= params[:q] %>">
+            </div>
+            <i class="cancel-button fa fa-close"></i>
+          </div>
+        </div>
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to "röportajlar", "/" %>
+          </li>
+          <li>
+            <%= nav_link_to "kategoriler", categories_path %>
+          </li>
+          <li class="hidden-xs">
+            <%= link_to image_tag('logo.svg', title: Settings.description, alt: Settings.description), root_path, id: 'logo-button', class: 'hidden-xs' %>
+          </li>
+          <li>
+            <%= nav_link_to "galeri", galleries_path %>
+          </li>
+          <li>
+            <%= nav_link_to "istatistikler", stats_path %>
+          </li>
+          <li style="display: none">
+            <a href="<%= about_path %>" onclick="ga('send', 'event', 'header-navigation', 'Hakkında');">hakkında</a>
+          </li>
+          <li class="search-button" style="display: none">
+            <i class="fa fa-search" onclick="ga('send', 'event', 'header-navigation', 'Arama');"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section id="main-container" class="container">
+    <%= yield %>
+  </section>
+  <footer>
+    <div>
+      <ul>
+        <li>
+          <%= link_to "röportajlar", "/" %>
+        </li>
+        <li>
+          <%= nav_link_to "kategoriler", categories_path %>
+        </li>
+        <li>
+          <%= nav_link_to "galeri", galleries_path %>
+        </li>
+        <li>
+          <%= nav_link_to "istatistikler", stats_path %>
+        </li>
+        <li>
+          <%= nav_link_to "hakkında", about_path %>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <%= yield :charts_js %>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P977BXZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+</body>
+</html>

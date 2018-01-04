@@ -1,0 +1,27 @@
+<div class="row post-page">
+  <article class="post col-md-8 col-md-offset-2">
+    <div class="post-body">
+      <h1>
+        Çalışma Masam Nedir?
+      </h1>
+      <p>
+        Çalışma Masam, teknoloji ile iç içe olan, sektöründeki yenilikleri takip eden ve aynı zamanda bunları paylaşmaktan keyif alan profesyonellerin; kullandığı cihazlar ve yazılımları, dinlediği müzikleri ve diğer merak edilen soruları cevapladığı bir röportaj sitesidir. 2016 Kasım ayından bugüne toplamda <b><%= Post.active.count %></b> kişiyle röportaj yayınlanmıştır.
+      </p>
+      <h1 style="margin-top: 80px;">Sorular</h1>
+
+      <h2 style="margin-top: 50px;">Röportaj için kişi önerebilir miyim?</h2>
+      <p>Formata uygun olduğunu düşündüğünüz kişileri <a href="mailto:info@calismamasam.com">info@calismamasam.com</a> adresine e-mail göndererek önerebilirsiniz. Kişi hakkında bilgi sahibi olabilmemiz için sosyal medya hesaplarını da ekleyebilirsiniz.</p>
+
+      <h2 style="margin-top: 50px;">Röportaj için kendimi önerebilir miyim?</h2>
+      <p>Tabii ki, sizin hakkınızda daha fazla bilgi sahibi olabilmemiz için sosyal medya hesaplarınızı da ekleyerek <a href="mailto:info@calismamasam.com">info@calismamasam.com</a> adresine e-mail gönderebilirsiniz.</p>
+
+      <h2 style="margin-top: 50px;">Çalışma Masam'ı kim yönetiyor?</h2>
+      <p>Merhaba, ben <a href="https://twitter.com/tgezginis">Tolga Gezginiş</a>. Öneri ve görüşleriniz için benimle <a href="https://twitter.com/tgezginis">Twitter</a> adresim üzerinden iletişime geçebilirsiniz.</p>
+
+      <h2 style="margin-top: 50px;">Nasıl katkıda bulunabilirim?</h2>
+      <p>Sosyal medya üzerinde yapacağınız paylaşımlarla bize destek olabilir, daha fazla kişiye ulaşmamızı sağlayabilirsiniz.</p>
+    </div>
+  </article>
+
+  <%= render 'shared/subscribe_form' %>
+</div>

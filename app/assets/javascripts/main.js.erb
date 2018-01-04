@@ -1,0 +1,110 @@
+$(document).on('ready', function () {
+  $('[data-toggle="popover"]').popover({
+    html: true,
+    placement: 'bottom',
+    content: function() {
+      return $('#popover-content').html();
+    }
+  });
+
+  $('.navbar-collapse').on('show.bs.collapse', function() {
+    $("nav.navbar").addClass('black-bg');
+    $("header").addClass('menu-activated');
+  });
+
+  $('.navbar-collapse').on('hide.bs.collapse', function() {
+    $("header").removeClass('menu-activated');
+    $("nav.navbar").removeClass('black-bg');
+  });
+
+  $("a.page-scroll").bind("click", function(event) {
+    var $anchor;
+    $anchor = $(this);
+    $("html, body").stop().animate({
+      scrollTop: $($anchor.attr("href")).offset().top
+    }, 1500, "easeInOutExpo");
+    event.preventDefault();
+  });
+
+  $(".navbar-collapse ul li a").click(function() {
+    $(".navbar-toggle:visible").click();
+  });
+
+  $('.images-panel .slider').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    autoplay: true,
+    autoplaySpeed: 3000
+  });
+
+  $('.images-panel .slider .slick-slide').not('.slick-cloned').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    gallery: {
+      enabled:true
+    }
+  });
+
+  $('.gallery .gallery-image').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    gallery: {
+      enabled:true
+    }
+  });
+
+  if ($('.grid').length) {
+    grid = new Muuri('.grid', {
+      layoutOnInit: true,
+      layout: {
+        fillGaps: true,
+      }
+    });
+    window.addEventListener('load', function () {
+      setTimeout(function(){
+        $('.grid').css('opacity', '1');
+        grid.refreshItems().layout();
+      }, 500);
+    });
+  }
+
+  setProductCategoriesFontSizes();
+
+  $(window).resize(function() {
+    setProductCategoriesFontSizes();
+  });
+});
+
+  function likeLogin() {
+    swal({
+      type: "error",
+      title: "Hata",
+      text: "Beğenmek için giriş yapmalısınız.",
+      showCancelButton: true,
+      cancelButtonText: "İptal",
+      confirmButtonColor: '#00d888',
+      confirmButtonText: "Giriş Yap"
+    }, function(){
+      window.location.href = "/users/sign_in";
+    }
+    );
+  }
+
+  function setProductCategoriesFontSizes() {
+    if ($(window).width() < 1024) {
+      var baseSize = 14;
+    }
+    else {
+      var baseSize = 18;
+    }
+
+    if ($('.list-categories ul li').length) {
+      $('.list-categories ul li').each(function(index) {
+        var fontSize = baseSize + (parseFloat($(this).data('size')) * 1.6);
+        $(this).css('font-size', fontSize + 'px');
+      });
+    };
+  }

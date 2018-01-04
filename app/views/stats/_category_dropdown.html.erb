@@ -1,0 +1,18 @@
+<div class="dropdown category-selector">
+  <button class="btn dropdown-toggle <%= @post_category.present? ? "btn-dark" : "btn-default" %>" type="button" id="category-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <% if @post_category.present? %>
+      <%= @post_category.title %>
+    <% else %>
+      Kategoriye göre filtrele
+    <% end %>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="category-dropdown">
+    <% if @post_category.present? %>
+      <li class="dropdown-header"><%= link_to "TÜM KATEGORİLERİ GÖSTER", stats_path(post_category_id: nil) %></li>
+    <% end %>
+    <% @categories.each do |category| %>
+      <li><%= nav_link_to category.title, stats_path(post_category_id: category.slug) %></li>
+    <% end %>
+  </ul>
+</div>

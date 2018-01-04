@@ -1,0 +1,25 @@
+{
+  "name": "smart-underline",
+  "main": [
+    "js/smart-underline.js"
+  ],
+  "ignore": [
+    "jade/",
+    "index.html",
+    "node_modules/"
+  ],
+  "devDependencies": {
+    "ui": "git@github.com:EagerIO/ui.git#af5a971e32a028ebc92b5cbbf4f82bf405a05c97"
+  },
+  "homepage": "https://github.com/EagerIO/SmartUnderline",
+  "version": "4.2.1",
+  "_release": "4.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.2.1",
+    "commit": "9a027c8443a57fedfc487195f3babc906db470ce"
+  },
+  "_source": "https://github.com/EagerIO/SmartUnderline.git",
+  "_target": "*",
+  "_originalSource": "smart-underline"
+}

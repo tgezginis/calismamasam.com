@@ -1,0 +1,41 @@
+// Desktop
+.slick-slider {
+  margin-bottom: 60px !important;
+  margin-left: -120px;
+  margin-right: -120px;
+}
+
+.slick-prev {
+  left: 10px !important;
+  z-index: 2;
+}
+
+.slick-next {
+  right: 10px !important;
+  z-index: 2;
+}
+
+.slick-dots {
+  bottom: -40px !important;
+
+  li {
+    margin: 0 !important;
+  }
+}
+
+.slick-dark-button {
+  &:before {
+    color: #AFAFAF !important;
+    font-size: 24px !important;
+  }
+}
+
+// Mobile
+
+// Tablet
+@media (max-width: 1024px) {
+  .slick-slider {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

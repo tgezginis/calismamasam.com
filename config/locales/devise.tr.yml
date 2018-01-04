@@ -1,0 +1,60 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+tr:
+  devise:
+    confirmations:
+      confirmed: "Eposta adresiniz başırılı bir şekilde onaylandı."
+      send_instructions: "Bir kaç dakika içerisinde eposta adresinizi nasıl onaylayacağınız hakkında bir eposta alacaksınız."
+      send_paranoid_instructions: "Eğer eposta adresinizi veritabanımızda kayıtlı ise bir kaç dakika içerisinde eposta adresinizi nasıl onaylayacağınız hakkında bir eposta alacaksınız."
+    failure:
+      already_authenticated: "Zaten giriş yaptınız."
+      inactive: "Hesabınız henüz aktif edilmedi."
+      invalid: "Geçersiz %{authentication_keys} veya parola."
+      locked: "Hesabınız kilitli."
+      last_attempt: "Hesabınız kilitlenmeden önceki son şansınız."
+      not_found_in_database: "Geçersiz %{authentication_keys} veya parola."
+      timeout: "Oturum süreniz sonlandı. Lütfen devam etmek için tekrar giriş yapın."
+      unauthenticated: "Devam etmeden önce giriş yapmalı veya kayıt olmalısınız."
+      unconfirmed: "Devam etmeden önce eposta adresinizi onaylamalısınız."
+    mailer:
+      confirmation_instructions:
+        subject: "Onaylama talimatları"
+      reset_password_instructions:
+        subject: "Parola sıfırlama talimatları"
+      unlock_instructions:
+        subject: "Kilit kaldırma talimalatları"
+    omniauth_callbacks:
+      failure: "\"%{reason}\" olduğu için %{kind}'den doğrulama yapılamıyor."
+      success: "%{kind} hesabından başarılı bir şekilde doğrulandı."
+    passwords:
+      no_token: "Parola sıfırlama epostasından gelmeden bu sayfaya erişemezsiniz. Eğer bir parola sıfırlama epostasından geliyorsanız tam bir URL kullandığınızdan emin olunuz."
+      send_instructions: "Birkaç dakika içerisinde parolanızı nasıl sıfırlayacağınız hakkında bir eposta alacaksınız."
+      send_paranoid_instructions: "Eğer eposta adresiniz sistemimizde kayıtlı ise birkaç dakika içerisinde eposta adresinize bir parola kurtarma linki alacaksınız."
+      updated: "Parolanız başarılı bir şekilde değiştirildi. Şimdi giriş yapabilirsiniz."
+      updated_not_active: "Parolanız başarılı bir şekilde değiştirildi."
+    registrations:
+      destroyed: "Güle güle! Hesabınız başarılı bir şekilde iptal edildi. Sizi tekrar görmeyi umut ediyoruz."
+      signed_up: "Hoşgeldiniz! Başarılı bir şekilde kayıt oldunuz."
+      signed_up_but_inactive: "Başarılı bir şekilde kayıt oldunuz. Ancak henüz hesabınızı doğrulamadığınız için giriş yapamasınız."
+      signed_up_but_locked: "Başarılı bir şekilde kayıt oldunuz. Ancak hesabınız kilitli olduğu için giriş yapamazsınız."
+      signed_up_but_unconfirmed: "Eposta adresinize onaylama linkli bir mesaj gönderildi. Lütfen hesabınızı aktif etmek için linke tıklayın."
+      update_needs_confirmation: "Hesabınız başarılı bir şekilde güncellendi. Fakar eposta adresinizi onaylamanız gerekmekteir. Lütfen eposta kutunuzu kontrol ediniz ve yeni eposta adresinizi onaylama linkine tıklayınız."
+      updated: "Hesabınız başarılı bir şekilde güncellendi."
+    sessions:
+      signed_in: "Başarılı giriş."
+      signed_out: "Başarılı çıkış."
+      already_signed_out: "Başarılı çıkış."
+    unlocks:
+      send_instructions: "Birkaç dakika içerisinde hesabınızın kilidini nasıl kaldıracağınız hakkında bir eposta alacaksınız."
+      send_paranoid_instructions: "Eğer hesabınız varsa birkaç dakika içerisinde hesabınızın kilidini nasıl kaldırıcağınız hakkında bir eposta alacaksınız."
+      unlocked: "Başarılı bir şekilde hesabınızın kilidi kaldırıldı. Devam etmek için lütfen giriş yapın."
+  errors:
+    messages:
+      already_confirmed: "zaten naylandı, lütfen giriş yapmayı deneyin."
+      confirmation_period_expired: "%{period} süresi içerisinde onaylanması gerekiyor. Lütfen yeni bir tane isteyin."
+      expired: "sona erdi, lütfen yeni bir tane isteyin."
+      not_found: "bulunamadı"
+      not_locked: "kilitlenmedi"
+      not_saved:
+        one: "Kaydedilirken %{resource}'dan 1 hata yakalandı:"
+        other: "Kaydedilirken %{resource}'dan %{count} hata yakalandı:"

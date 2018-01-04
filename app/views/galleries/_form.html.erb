@@ -1,0 +1,20 @@
+<%= form_for @gallery, url: new_gallery_path, html: { multipart: true, class: 'new-gallery-form' } do |f| %>
+  <div class="form-group">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :job_title %><br />
+    <%= f.text_field :job_title, autofocus: true, class: 'form-control' %>
+  </div>
+  <h4>Görseller</h4>
+  <div class="form-group">
+    <%= f.fields_for :gallery_images, GalleryImage.new do |gallery_image| %>
+      <%= render 'gallery_image_fields', f: gallery_image %>
+      <%= link_to_add_association 'başka fotoğraf ekle', f, :gallery_images, class: "btn btn-warning btn-sm" %>
+    <% end %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Gönder", class: "btn btn-success" %>
+<% end %>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-posta Üyeliği - Çalışma Masam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="description" content="<%= Settings.description %>">
+  <meta name="author" content="Tolga Gezginiş">
+  <meta name="keywords" content="<%= Settings.keywords %>">
+  <link rel="alternate" type="application/rss+xml" title="Çalışma Masam RSS Feed" href="https://calismamasam.com/feed?format=rss">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Menü</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to image_tag('logo.svg'), '/', id: 'logo-button', class: 'page-scroll' %>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li>
+            <a class="page-scroll" href="/">RÖPORTAJLAR</a>
+          </li>
+          <li>
+            <%= link_to "KATEGORİLER", '/kategoriler', class: 'page-scroll' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section id="main-container" class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 unsubscribe-page">
+        <% if opted_out? %>
+          <p>Abonelikten ayrıldın 😔</p>
+          <p class="sub">Bundan sonra e-posta adresine gönderim yapmayacağız.</p>
+          <%= image_tag "unsubscribe.png" %>
+          <p><%= link_to "TEKRAR ABONE OL", subscribe_url, class: 'btn btn-success btn-lg' %></p>
+        <% else %>
+          <p>Tekrar hoşgeldin 😊</p>
+          <p class="sub">Bundan sonra yeni röportajları e-posta adresine ileteceğiz.</p>
+          <%= image_tag "subscribe.jpg" %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <section id="loading-mask" class="loading-mask container">
+    <div class="mask-container">
+      <div class="mask-logo">
+        <%= image_tag 'loading.svg' %>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

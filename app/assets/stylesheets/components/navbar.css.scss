@@ -1,0 +1,135 @@
+// Desktop
+
+nav.navbar {
+  #logo-button {
+    img {
+      width: 180px;
+    }
+  }
+}
+.navbar-default {
+  background-color: #fff;
+  border-bottom: none;
+  padding: 5px 0;
+
+  .navbar-header {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-brand {
+    padding: 0 15px;
+  }
+
+  .navbar-collapse {
+    clear: both;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-toggle {
+    background-color: #fff;
+    border-color: #fff;
+    margin: 7px 0;
+
+    .icon-bar {
+      background-color: #37474F;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: #fff;
+    }
+  }
+
+  .nav li a {
+    color: #4c4c4c;
+    text-transform: lowercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding: 10px 15px;
+
+    &.active,
+    &:focus,
+    &:hover {
+      color: #f50057;
+      outline: 0;
+      text-decoration: none;
+    }
+  }
+
+  .navbar-nav {
+    margin: 15px auto 0;
+    width: 100%;
+    float: none;
+
+    li {
+      display: inline-table;
+      text-align: center;
+      float: none;
+      min-width: 120px;
+    }
+
+    .active > a {
+      border-radius: 0;
+      color: #fff;
+      background-color: #f50057;
+
+      &:focus,
+      &:hover {
+        color: #fff;
+        background-color: #428681;
+      }
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  .navbar-default {
+    margin: 0;
+  }
+
+  .navbar-header {
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  .navbar-collapse {
+    padding: 0;
+    border: none;
+    width: auto !important;
+    margin: 0 -30px !important;
+
+    .navbar-nav {
+      margin: 10px 15px 5px;
+
+      li {
+        display: inline-table;
+        text-align: left;
+        float: left;
+        width: 100%;
+        padding: 10px 20px;
+        border-bottom: solid 1px #dedede;
+
+        a {
+          font-size: 16px;
+          padding: 5px 15px 5px 0;
+        }
+      }
+    }
+  }
+
+  .search-bar {
+    height: 50px;
+    padding: 10px 0;
+  }
+
+  #logo-button img {
+    width: 150px !important;
+    margin: 15px 0;
+  }
+}
+
+// Tablet

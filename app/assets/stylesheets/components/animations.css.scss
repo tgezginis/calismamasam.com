@@ -1,0 +1,12 @@
+.blur-up {
+  opacity: .9;
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+  transition: filter 200ms, -webkit-filter 200ms;
+}
+
+.blur-up.lazyloaded {
+  opacity: 1;
+  -webkit-filter: blur(0);
+  filter: blur(0);
+}

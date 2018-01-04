@@ -1,0 +1,17 @@
+<div class="clearfix"></div>
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, autofocus: true, class: 'form-control', required: true %>
+    <div style="margin: 10px 0 20px;">
+      <small>Maksimum 1 MB boyutunda, jpg ya da png formatında olmalıdır</small>
+    </div>
+  </div>
+
+  <%= link_to_remove_association "sil", f, class: "btn btn-danger btn-sm" %>
+</div>

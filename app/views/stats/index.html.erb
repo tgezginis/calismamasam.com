@@ -1,0 +1,28 @@
+<%= content_for :html_title, 'İstatistikler' %>
+
+<div class="row stats-page">
+  <article class="col-sm-10 col-sm-offset-1">
+    <h1>İstatistikler</h1>
+    <% if @parent_product_category.present? %>
+      <div class="row">
+        <%= render 'sidebar' %>
+
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="title"><%= @parent_product_category.title %></h2>
+            </div>
+            <div class="col-xs-12">
+              <%= render 'category_dropdown' %>
+            </div>
+          </div>
+
+          <%= render 'chart' %>
+          <%= render 'posts' %>
+        </div>
+      </div>
+    <% else %>
+      <%= render 'without_category' %>
+    <% end %>
+  </article>
+</div>

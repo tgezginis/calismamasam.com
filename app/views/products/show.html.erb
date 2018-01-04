@@ -1,0 +1,19 @@
+<%= content_for :html_title, @product.name_with_brand %>
+
+<div class="row product-page">
+  <article class="col-sm-10 col-sm-offset-1">
+    <h1><%= @product.name_with_brand %></h1>
+    <%= render 'breadcrumb' %>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="product-image">
+          <%= image_tag @product.image(:full) %>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <%= render 'chart' %>
+        <%= render 'posts' %>
+      </div>
+    </div>
+  </article>
+</div>

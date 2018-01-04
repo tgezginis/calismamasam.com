@@ -1,0 +1,26 @@
+<% row_class = "col-md-10 col-md-offset-1" if size == :big %>
+<% row_class = "col-md-8 col-md-offset-2" if size == :normal %>
+
+<% cache ["post", post.id, post.updated_at] do %>
+  <% job_and_company = post.company.present? ? "#{post.job_title} @ #{post.company}" : post.job_title %>
+  <article class="post <%= row_class %>">
+    <figure>
+      <a href="<%= post_path(post.slug) %>" onclick="ga('send', 'event', 'post-links', '<%= post.title %>');">
+        <%= image_tag(post.image(:normal), data: {src: post.image(:full)}, class: 'post-image lazyload blur-up', alt: post.title, title: post.title) %>
+      </a>
+    </figure>
+    <div class="post-info center">
+      <h2>
+        <a href="<%= post_path(post.slug) %>" onclick="ga('send', 'event', 'post-links', '<%= post.title %>');">
+          <%= post.title %>
+        </a>
+      </h2>
+      <span class="post-title"><%= job_and_company %></span>
+      <div class="row hidden-xs">
+        <div class="col-sm-10 col-sm-offset-1">
+          <p class="post-description"><%= post.description %></p>
+        </div>
+      </div>
+    </div>
+  </article>
+<% end %>

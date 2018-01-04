@@ -1,0 +1,77 @@
+// Desktop
+div.subscribe-form {
+  clear: both;
+  background: #fff;
+  border: 2px solid #CFD8DC;
+  text-align: center;
+  padding: 30px 30px 25px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #37474F;
+
+  div.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: 'Josefin Sans';
+  }
+
+  input {
+    border: 2px solid #CFD8DC !important;
+    border-radius: 0 !important;
+    width: 220px !important;
+    text-align: left !important;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  button.btn {
+    margin-left: 10px;
+    border: 2px solid #37474F !important;
+    border-radius: 0 !important;
+    width: 100px !important;
+    color: #37474F !important;
+  }
+
+  div.social-buttons {
+    margin: 10px 0 0;
+
+    a {
+      font-size: 24px;
+      margin: 0 10px;
+    }
+  }
+
+  div.recaptcha-form {
+    margin: 10px auto;
+    width: 304px;
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  div.subscribe-form {
+    padding: 10px;
+
+    input {
+      width: 160px !important;
+    }
+
+    button.btn {
+      width: 90px !important;
+    }
+
+    .form-title {
+      font-size: 16px !important;
+    }
+  }
+}
+
+// Tablet

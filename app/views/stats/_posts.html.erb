@@ -1,0 +1,31 @@
+<% if @posts && @posts.any? %>
+  <div class="table-responsive posts-table">
+    <h2>Kim ne kullanıyor?</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <td></td>
+          <td>İsim</td>
+          <td>Kullandığı Ekipmanlar</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <% post_products = post.products.where(id: @product_ids, category_id: @parent_product_category.subtree_ids).includes(:brand).order(name: :asc) %>
+          <tr>
+            <td width="50">
+              <%= link_to post_path(post) do %>
+                <%= image_tag(post.image(:thumb), width: '50', alt: post.title, title: post.title) %>
+              <% end %>
+            </td>
+            <td width="200">
+              <div class="post-title"><%= link_to post.title, post_path(post), target: 'blank' %></div>
+              <div class="post-job-title"><%= post.job_title %></div>
+            </td>
+            <td><%= raw post_products.map{ |product| link_to product.decorate.name_with_brand, product_path(product) }.join(', ') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

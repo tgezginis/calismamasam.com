@@ -1,0 +1,14 @@
+//= require jquery
+//= require jquery_ujs
+//= require js.cookie
+//= require bootstrap.min
+//= require sweetalert
+//= require jquery.slick
+//= require magnific-popup
+//= require Chart.bundle
+//= require chartkick
+//= require bootstrap-treeview.min
+//= require muuri.min
+//= require lazysizes.min
+//= require cocoon
+//= require_tree .

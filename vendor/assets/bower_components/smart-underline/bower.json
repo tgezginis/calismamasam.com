@@ -1,0 +1,14 @@
+{
+  "name": "smart-underline",
+  "main": [
+    "js/smart-underline.js"
+  ],
+  "ignore": [
+    "jade/",
+    "index.html",
+    "node_modules/"
+  ],
+  "devDependencies": {
+    "ui": "git@github.com:EagerIO/ui.git#af5a971e32a028ebc92b5cbbf4f82bf405a05c97"
+  }
+}

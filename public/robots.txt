@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /ara/*
+Disallow: /admin
+Disallow: /users

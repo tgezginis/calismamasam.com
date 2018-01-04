@@ -1,0 +1,9 @@
+var link = $('.like-panel a');
+link.removeClass('active');
+link.attr('href', link.attr('href').replace('unlike', 'like'));
+
+<% if @likes_count > 0 %>
+  $('.like-panel .likes-count').html('<%= @likes_count %> kişi beğendi');
+<% else %>
+  $('.like-panel .likes-count').html('');
+<% end %>

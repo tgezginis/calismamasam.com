@@ -1,0 +1,17 @@
+<div class="clearfix"></div>
+<section class="subscribe-panel col-md-8 col-md-offset-2">
+  <div class="subscribe-form">
+    <div class="form-title">Abone ol, röportajları kaçırma!</div>
+    <%= form_for Subscriber.new, url: create_subscriber_path, remote: true do |f| %>
+      <%= token_tag nil %>
+      <%= f.text_field :email, placeholder: 'E-posta Adresiniz' %>
+      <%= f.button "KAYIT OL", class: 'btn btn-default' %>
+    <% end %>
+    <div class="social-buttons">
+      <a href="https://facebook.com/calismamasamcom" target="_blank"><i class="fa fa-facebook"></i></a>
+      <a href="https://twitter.com/calismamasamcom" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://calismamasam.com/feed?format=rss"><i class="fa fa-rss"></i></a>
+      <a href="https://itunes.apple.com/tr/podcast/cal-sma-masam/id1184205170"><i class="fa fa-podcast"></i></a>
+    </div>
+  </div>
+</section>

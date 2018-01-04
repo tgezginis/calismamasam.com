@@ -1,0 +1,28 @@
+<div class="col-md-3">
+  <div id="tree"></div>
+</div>
+
+<% content_for :charts_js do %>
+  <script type="text/javascript">
+    $(document).on('ready', function () {
+      $('#tree').treeview({
+        data: <%= raw ProductCategory.json_tree(ProductCategory.roots.order(title: :asc), @parent_product_category.try(:id), @post_category.try(:id)).to_json %>,
+        enableLinks: true,
+        collapseIcon: 'fa fa-minus',
+        expandIcon: 'fa fa-plus',
+        icon: 'fa fa-circle-o',
+        selectedColor: '#000',
+        selectedBackColor: '#dadada'
+      });
+
+      $('#tree').treeview('collapseAll', { silent: true });
+
+      windowsize = $(window).width();
+      if (windowsize > 760) {
+        var selected_node = $('#tree').treeview('getSelected')[0];
+        $('#tree').treeview('expandNode', [ selected_node, { levels: 2, silent: true } ]);
+        $('#tree').treeview('revealNode', [ selected_node, { levels: 2, silent: true } ]);
+      }
+    });
+  </script>
+<% end %>

@@ -1,0 +1,21 @@
+<% post_url = "https://calismamasam.com/" + @post.slug %>
+<% job_and_company = @post.company.present? ? "#{@post.job_title} @ #{@post.company}" : @post.job_title %>
+
+<tr>
+  <td align='left'>
+    <%= link_to image_tag(@post.image(:full), class: 'post-image', width: 650), post_url %><br/>
+
+    <a target='_blank' href='<%= post_url %>' class="color: #000 !important; text-decoration: none !important;">
+      <h2>
+        <%= @post.title %>
+      </h2>
+    </a>
+    <h3><%= job_and_company %></h3>
+    <br/>
+  </td>
+</tr>
+<tr>
+  <td align='center' bgcolor='#1A54BA' style='background:#69C374; padding:15px 18px;-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;'>
+    <a target='_blank' href='<%= post_url %>' class='link2' style='color:#ffffff;'>RÖPORTAJA GİT</a>
+  </td>
+</tr>

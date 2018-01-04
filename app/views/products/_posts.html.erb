@@ -1,0 +1,23 @@
+<% if @posts && @posts.any? %>
+  <div class="table-responsive posts-table">
+    <h2>Kullanıcılar</h2>
+    <table class="table">
+      <tbody>
+        <% @posts.each do |post| %>
+          <% post = post.decorate %>
+          <tr>
+            <td width="50">
+              <%= link_to post_path(post) do %>
+                <%= image_tag(post.image(:thumb), width: '50', alt: post.title, title: post.title) %>
+              <% end %>
+            </td>
+            <td>
+              <div class="post-title"><%= link_to post.title, post_path(post) %></div>
+              <div class="post-job-title"><%= post.job_and_company %></div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

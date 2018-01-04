@@ -1,0 +1,19 @@
+.error-page {
+  margin-top: 40px;
+  text-align: center;
+  p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    &.sub {
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
+  img {
+    width: 420px;
+    margin: 20px 0 20px;
+  }
+  .btn {
+  }
+}

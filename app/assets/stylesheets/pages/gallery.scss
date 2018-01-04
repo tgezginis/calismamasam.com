@@ -1,0 +1,218 @@
+.galleries,
+.gallery {
+  padding: 20px 0 0;
+
+  h1,
+  h2 {
+    text-align: center;
+  }
+
+  h1 {
+
+    color: #37474F !important;
+  }
+
+  h2 {
+    font-size: 16px;
+    margin: -10px 0 30px;
+    font-weight: 400;
+    color: #78909C;
+  }
+
+  p.gallery-date {
+    text-align: center;
+    font-size: 12px;
+    margin-top: -25px;
+    color: #B0BEC5;
+  }
+
+  .gallery-buttons {
+    text-align: center;
+    margin: -10px 0 20px;
+  }
+
+  .gallery-list {
+    > div {
+      padding: 10px 0;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &.grid {
+      position: relative;
+      .item {
+        display: block;
+        position: absolute;
+        max-width: 380px;
+        margin: 10px 10px 0;
+        z-index: 1;
+
+        .item-content {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: #f5f5f5;
+          padding: 15px 15px 0;
+
+          .gallery-title {
+            font-size: 14px;
+            margin: 10px 0 0;
+            font-weight: bold;
+
+            a {
+              color: #525252;
+              font-weight: 600;
+            }
+          }
+
+          .gallery-date {
+            font-size: 11px;
+            margin: 0 0 10px;
+            color: #B0BEC5;
+          }
+        }
+      }
+    }
+  }
+}
+
+.gallery {
+  > p {
+    text-align: center;
+    font-size: 12px;
+    margin-top: -15px;
+  }
+
+  div.like-panel {
+    text-align: left;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 10px;
+
+    a {
+      color: #d8d8d8;
+    }
+
+    > div {
+      display: table-cell;
+      vertical-align: middle;
+
+      &.likes-count {
+        padding-left: 10px;
+        color: #a2a2a2;
+      }
+    }
+
+    a.active,
+    a:active,
+    a:hover {
+      color: #f11e4c;
+    }
+
+    i {
+      font-size: 26px;
+    }
+  }
+
+  .item-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 30px 0 0;
+
+    .gallery-title {
+      margin: 5px 0 30px;
+      color: #525252;
+      font-size: 20px;
+      font-family: 'Josefin Sans';
+      text-align: center;
+    }
+
+    .gallery-image {
+      img {
+        width: 100%;
+      }
+    }
+
+    h4 {
+      margin: 15px 0;
+    }
+
+    .gallery-date {
+      font-size: 12px;
+      margin: 15px 0;
+      color: #a5a5a5;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .gallery-list .item {
+    max-width: 100% !important;
+  }
+}
+
+.gallery-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  h3 {
+    text-align: center;
+    line-height: 300%;
+    font-size: 26px;
+    margin: 15px 0 5px;
+    font-family: 'Josefin Sans';
+
+    a {
+      color: #f50057;
+    }
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .checkbox label {
+    margin: -2px 0;
+    padding: 0;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.new-gallery-form {
+  h4 {
+    margin: 30px 0 0;
+  }
+
+  .nested-fields {
+    margin: 15px 0 0;
+
+    .field {
+      margin-bottom: 15px;
+    }
+  }
+
+  .add_fields {
+    width: 47%;
+    margin-left: 3%;
+    float: left;
+  }
+
+  .remove_fields {
+    width: 47%;
+    margin-right: 3%;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  .btn-success {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

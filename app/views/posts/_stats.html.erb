@@ -1,0 +1,51 @@
+<% if @post.products.any? %>
+  <div class="table-responsive stats-table">
+    <h2>Kullandığı Ekipmanlar</h2>
+    <table class="table products-table">
+      <thead>
+        <tr>
+          <td width="50%">Donanım</td>
+          <td width="50%">Yazılım</td>
+        </tr>
+      </thead>
+      <tbody>
+        <td width="50%">
+          <table>
+            <tbody>
+              <% @post.products.where(category_id: ProductCategory.find_by(title: 'Donanım')&.subtree_ids).each do |product| %>
+                <tr>
+                  <td width="45">
+                    <%= link_to product_path(product) do %>
+                      <%= image_tag(product.image(:thumb), width: '30', alt: product.decorate.name_with_brand, title: product.decorate.name_with_brand) %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <div class="product-title"><%= link_to product.decorate.name_with_brand, product_path(product) %></div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+        <td width="50%">
+          <table>
+            <tbody>
+              <% @post.products.where(category_id: ProductCategory.find_by(title: 'Yazılım')&.subtree_ids).each do |product| %>
+                <tr>
+                  <td width="45">
+                    <%= link_to product_path(product) do %>
+                      <%= image_tag(product.image(:thumb), width: '30', alt: product.decorate.name_with_brand, title: product.decorate.name_with_brand) %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <div class="product-title"><%= link_to product.decorate.name_with_brand, product_path(product) %></div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+      </tbody>
+    </table>
+  </div>
+<% end %>

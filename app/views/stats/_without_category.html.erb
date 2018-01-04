@@ -1,0 +1,36 @@
+<div class="stats-boxes row">
+  <div class="post-stats col-xs-12 col-sm-4">
+    <div>
+      <div class="count"><%= Post.active.count %></div>
+      <div class="text">RÖPORTAJ</div>
+    </div>
+  </div>
+  <div class="category-stats col-xs-12 col-sm-4">
+    <div>
+      <div class="count"><%= Category.count %></div>
+      <div class="text">KATEGORİ</div>
+    </div>
+  </div>
+  <div class="product-stats col-xs-12 col-sm-4">
+    <div>
+      <div class="count"><%= Product.count %></div>
+      <div class="text">EKİPMAN</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <% cache ["stats-product-categories", @product_categories, Post.active.maximum(:updated_at), Post.active.maximum(:published_at)] do %>
+    <% @product_categories.each do |root_category| %>
+      <div class="list-categories col-xs-6">
+        <h2><%= root_category.title %> <span class="hidden-xs">Kategorileri</span></h2>
+        <ul>
+          <% root_category.children.has_post.order(title: :asc).each do |category| %>
+            <li data-size="<%= (category.active_post_count.to_f / Post.active.count.to_f).round(2) * 10 %>"><%= link_to category.title, stats_path(category.slug) %></li>
+          <% end %>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

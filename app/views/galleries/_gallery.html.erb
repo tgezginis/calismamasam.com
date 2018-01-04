@@ -1,0 +1,15 @@
+<div class="item">
+  <div class="item-content">
+    <div class="gallery-image">
+      <%= link_to gallery_path(gallery) do %>
+        <%= image_tag gallery.decorate.first_image_url(:full) %>
+      <% end %>
+    </div>
+    <div class="gallery-title">
+      <%= link_to gallery.title, gallery_path(gallery) %>
+    </div>
+    <div class="gallery-date ">
+      <%= l gallery.created_at, format: :short %>
+    </div>
+  </div>
+</div>

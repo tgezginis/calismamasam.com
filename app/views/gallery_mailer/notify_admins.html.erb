@@ -1,0 +1,22 @@
+<% gallery_url = "https://calismamasam.com/admin/gallery/#{@gallery.id}/edit" %>
+
+<tr>
+  <td align='left'>
+    <%= link_to image_tag(@gallery.first_image_url(:full), class: 'post-image', width: '650'), gallery_url %><br/>
+
+    <a target='_blank' href='<%= gallery_url %>' class="color: #000; text-decoration: none;">
+      <h2>
+        <%= @gallery.title %>
+      </h2>
+      <br>
+      <p>Durum: <%= @gallery.is_active ? 'Aktif' : 'Onay bekliyor' %></p>
+      <br>
+      <br>
+    </a>
+  </td>
+</tr>
+<tr>
+  <td align='center' bgcolor='#1A54BA' style='background:#69C374; padding:15px 18px;-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;'>
+    <a target='_blank' href='<%= gallery_url %>' class='link2' style='color:#ffffff;'>Galeriyi Onayla</a>
+  </td>
+</tr>

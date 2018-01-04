@@ -1,0 +1,28 @@
+.pagination-container {
+  .pagination {
+    margin: 20px auto !important;
+    display: table !important;
+    font-size: 14px;
+
+    > li > a,
+    > li > span {
+      color: #90A4AE !important;
+      border: 1px solid #CFD8DC !important;
+    }
+
+    > .active > a,
+     > .active > a:hover,
+     > .active > span,
+     > .active > span:focus,
+     > .active > span:hover,
+    > .active > a:focus {
+      background-color: #90A4AE !important;
+      border-color: #90A4AE !important;
+      color: #fff !important;
+    }
+
+    a {
+      cursor: pointer;
+    }
+  }
+}

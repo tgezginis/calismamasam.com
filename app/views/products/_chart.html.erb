@@ -1,0 +1,5 @@
+<% if @chart_data && @chart_data.any? %>
+  <div class="row">
+    <%= pie_chart @chart_data, content_for: :charts_js %>
+  </div>
+<% end %>

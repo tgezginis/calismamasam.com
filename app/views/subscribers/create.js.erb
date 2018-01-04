@@ -1,0 +1,19 @@
+<% if @result %>
+  swal({
+    title: "Hoşgeldin",
+    text: "Bundan sonra yeni röportajları e-posta adresine ileteceğiz.",
+    confirmButtonColor: '#00d888',
+    confirmButtonText: "Tamam"
+  });
+  $("#subscriber_email").val("");
+<% else %>
+  <% message = "Lütfen form alanlarını doldurarak tekrar deneyin." %>
+  <% message = @message if @message %>
+  swal({
+    type: "error",
+    title: "Hata",
+    text: "<%= message %>",
+    confirmButtonColor: '#00d888',
+    confirmButtonText: "Tamam"
+  });
+<% end %>

@@ -1,0 +1,16 @@
+<div class="social-buttons">
+  <div class="social-buttons-title">Paylaş</div>
+  <ul>
+    <li>
+      <a onClick="window.open('http://www.facebook.com/sharer.php?s=100&p[title]=<%= @post.title %>&p[url]=<%= url_for(:only_path => false) %>&p[images][0]=<%= @post.image(:full) %>','sharer','toolbar=0,status=0,width=580,height=325');ga('send', 'event', 'social-share-buttons', 'facebook', '<%= @post.title %>');" href="javascript: void(0);">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a onClick="window.open('https://twitter.com/intent/tweet?url=<%= url_for(:only_path => false) %>&text=<%= @post.title %> - <%= @post.job_title %>%0A&via=calismamasamcom','sharer','toolbar=0,status=0,width=600,height=500');ga('send', 'event', 'social-share-buttons', 'twitter', '<%= @post.title %>');" href="javascript: void(0);">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+  </ul>
+  <div class="clear"></div>
+</div>

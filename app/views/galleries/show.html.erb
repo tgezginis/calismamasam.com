@@ -1,0 +1,63 @@
+<%= content_for :html_title, @gallery.title %>
+
+<% @liked = current_user.present? ? @gallery.liked?(current_user) : false %>
+
+<% cache ["gallery", @gallery.id, @gallery.updated_at, current_user&.id, @liked] do %>
+  <div class="row">
+    <article class="gallery col-md-10 col-md-offset-1">
+      <h1><%= @gallery.title %></h1>
+      <h2><%= @gallery.decorate.category_titles %></h2>
+      <p class="gallery-date"><%= l @gallery.created_at, format: :short %></p>
+
+      <div class="item-content">
+        <% @gallery.fetch_gallery_images.each_with_index do |gallery_image, index| %>
+          <div class="gallery-image">
+            <a href="<%= gallery_image.image(:original) %>" title="<%= gallery_image.title %>" target="_blank">
+              <%= image_tag gallery_image.image(:full) %>
+            </a>
+          </div>
+
+          <% if index.zero? %>
+            <div class="pull-left like-panel">
+              <div>
+                <% if current_user.present? %>
+                  <% if @liked %>
+                    <%= link_to unlike_gallery_path(@gallery, token: current_user.token), remote: true, class: 'active' do %>
+                      <i class="fa fa-heart"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to like_gallery_path(@gallery, token: current_user.token), remote: true do %>
+                      <i class="fa fa-heart"></i>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <a href="javascript:likeLogin();"><i class="fa fa-heart"></i></a>
+                <% end %>
+              </div>
+              <div class="likes-count">
+                <% if @gallery.likes_count > 0 %>
+                  <%= @gallery.likes_count %> kişi beğendi
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="gallery-title">
+            <%= gallery_image.title %>
+          </div>
+        <% end %>
+      </div>
+    </article>
+
+    <div id="disqus_thread" class="col-md-8 col-md-offset-2"></div>
+    <script>
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//calismamasam.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+<% end %>

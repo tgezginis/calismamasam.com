@@ -1,0 +1,38 @@
+<% if user_signed_in? %>
+  <div class="user-panel">
+    <a href="javascript:void(0)" data-toggle="popover">
+      <%= image_tag gravatar_url(current_user.email, 64) %>
+    </a>
+    <div id="popover-content" class="list-group" style="display: none">
+      <ul>
+        <% if current_user.admin? %>
+          <li>
+            <%= link_to('Yönetim Paneli', '/admin') %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to('Galeri Ekle', new_gallery_path) %>
+        </li>
+        <li>
+          <%= link_to('Çıkış Yap', destroy_user_session_path, method: :delete) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% else %>
+  <div class="user-panel">
+    <a href="javascript:void(0)" data-toggle="popover">
+      <%= image_tag gravatar_url("", 64) %>
+    </a>
+    <div id="popover-content" class="list-group" style="display: none">
+      <ul>
+        <li>
+          <%= link_to('Giriş Yap', new_user_session_path) %>
+        </li>
+        <li>
+          <%= link_to('Kayıt Ol', new_user_registration_path) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>

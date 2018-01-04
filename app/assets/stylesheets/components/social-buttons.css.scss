@@ -1,0 +1,29 @@
+ul.social-buttons {
+  clear: both;
+  padding: 0;
+  list-style-type: none;
+
+  li a {
+    float: left;
+    display: block;
+    background-color: #222;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    font-size: 20px;
+    line-height: 40px;
+    margin: 10px 5px;
+    text-align: center;
+    color: #fff;
+    outline: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: #f50057;
+    }
+  }
+}
