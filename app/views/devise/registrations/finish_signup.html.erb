@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="login-form">
+    <h3 style="line-height: 26px;">Kaydınızı tamamlamak için e-posta adresinizi yazınız</h3>
+
+    <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
+      <br>
+      <div class="form-group">
+        <%= f.label :email, value: 'E-posta Adresiniz' %>
+        <%= f.email_field :email, value: nil, autofocus: true, class: 'form-control' %>
+      </div>
+      <br>
+
+      <%= f.submit "Kaydımı Tamamla", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
+
+<% if @user.errors.any? %>
+  <% message = "Lütfen form alanlarını doldurarak tekrar deneyin." %>
+  <% message = @user.errors.full_messages.join('\n') %>
+  <script type="text/javascript">
+    $(document).on('ready', function () {
+      sweetAlert({
+        type: "error",
+        title: "Hata",
+        text: "<%= message %>",
+        confirmButtonColor: '#00d888',
+        confirmButtonText: "Tamam"
+      });
+    });
+  </script>
+<% end %>

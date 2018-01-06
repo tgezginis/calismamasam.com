@@ -165,7 +165,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.8.4)
       i18n (~> 0.5)
-    faraday (0.13.1)
+    faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
@@ -179,7 +179,7 @@ GEM
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
-    hashie (3.5.6)
+    hashie (3.5.7)
     http (3.0.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -213,6 +213,7 @@ GEM
       railties (>= 3.2.16)
     json (2.1.0)
     jsonapi-renderer (0.2.0)
+    jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -255,6 +256,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.2)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     naught (1.1.0)
     nav_lynx (1.1.1)
@@ -264,6 +266,30 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    oauth (0.5.4)
+    oauth2 (1.4.0)
+      faraday (>= 0.8, < 0.13)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (1.8.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-facebook (4.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-github (1.3.0)
+      omniauth (~> 1.5)
+      omniauth-oauth2 (>= 1.4.0, < 2.0)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.5.0)
+      oauth2 (~> 1.1)
+      omniauth (~> 1.2)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     one_signal (1.2.0)
     orm_adapter (0.5.0)
     paperclip (5.1.0)
@@ -491,6 +517,10 @@ DEPENDENCIES
   mailgun_rails
   mailkick
   nav_lynx
+  omniauth
+  omniauth-facebook (= 4.0.0)
+  omniauth-github
+  omniauth-twitter
   one_signal
   paperclip
   pg
