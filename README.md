@@ -12,8 +12,8 @@
 
 *Ek olarak birçok Ruby Gem paketi kullanıyoruz. Tüm listeye [Gemfile](https://github.com/calismamasam/calismamasam.com/blob/master/Gemfile) dosyasından erişebilirsiniz.*
 
-## Sende katkıda bulun
-Çalışma Masam tamamen açık kaynak olarak geliştirilmektedir. Sizde bizlere öneri ya da şikayetlerinizi [bildirebilir](https://github.com/calismamasam/calismamasam.com/issues), yapacağınız geliştirmeler ile bize katkıda bulunabilirsiniz.
+## Sen de katkıda bulun
+Çalışma Masam tamamen açık kaynak olarak geliştirilmektedir. Siz de bizlere öneri ya da şikayetlerinizi [bildirebilir](https://github.com/calismamasam/calismamasam.com/issues), yapacağınız geliştirmeler ile bize katkıda bulunabilirsiniz.
 
 ## Katkıda bulunanlar
 * Tolga Gezginiş

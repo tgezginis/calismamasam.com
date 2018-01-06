@@ -24,3 +24,21 @@
     padding: 0;
   }
 }
+
+.oauth-links {
+  margin: 60px 0;
+
+  a.btn-social {
+    border: none !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 60px !important;
+    margin-bottom: 10px !important;
+
+    & > :first-child {
+      left: 5px !important;
+      width: 40px !important;
+      line-height: 40px !important;
+    }
+  }
+}
