@@ -10,7 +10,12 @@ Rails.application.routes.draw do
 
   draw :api
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'users', omniauth_callbacks: 'omniauth_callbacks' }
+  devise_scope :user do
+    match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  end
+  get '/users/auth/github/callback' => 'omniauth_callbacks#github' # Fix for Github oauth
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: 'home#index'
