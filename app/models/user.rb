@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :galleries
   has_many :likes
+  has_many :identities
 
   validates :email, :name, :role, presence: true
   validates :email, uniqueness: true
@@ -20,8 +21,9 @@ class User < ApplicationRecord
   scope :admins, -> { where('role is not null').where.not(role: :user) }
 
   before_validation :set_default_role
-  after_create :add_as_subscriber
   before_create :generate_token
+
+  attr_accessor :subscriber_agreement
 
   def set_default_role
     self.role ||= :user
@@ -37,9 +39,19 @@ class User < ApplicationRecord
     end
   end
 
+  def subscriber?
+    !Subscriber.find_by(email: email)&.opted_out? || false
+  end
+
   def add_as_subscriber
     subscriber = Subscriber.find_or_create_by(email: email)
     subscriber.opt_in
+  end
+
+  def opt_out_from_subscription
+    return unless subscriber?
+    subscriber = Subscriber.find_by(email: email)
+    subscriber.opt_out
   end
 
   def like(likeable_type, likeable_id)

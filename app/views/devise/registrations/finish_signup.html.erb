@@ -8,6 +8,12 @@
         <%= f.label :email, value: 'E-posta Adresiniz' %>
         <%= f.email_field :email, value: nil, autofocus: true, class: 'form-control' %>
       </div>
+      <div class="checkbox agreement">
+        <label>
+          <%= f.check_box :subscriber_agreement, checked: true %>
+          Yeni röportajları e-posta ile takip etmek istiyorum
+        </label>
+      </div>
       <br>
 
       <%= f.submit "Kaydımı Tamamla", class: "btn btn-success" %>

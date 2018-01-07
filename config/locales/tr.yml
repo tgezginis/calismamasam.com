@@ -227,6 +227,7 @@ tr:
     email: "Email Adresi"
     password: "Parola"
     password_confirmation: "Parola Doğrulama"
+    current_password: "Mevcut Parola"
   activerecord:
     models:
       image:
