@@ -1,0 +1,32 @@
+<%= content_for :html_title, "#{@params[:query]} araması için sonuçlar" %>
+
+<% cache ["search", @params.permit!, Post.active.maximum(:updated_at)] do %>
+  <% if Post.active.any? %>
+    <div class="row search-page">
+      <h1><%= @params[:query] %> araması için sonuçlar</h1>
+      <% service = SearchInteractors::SearchPost.call(query: @params[:query], page: @params[:page], per_page: 20, params: @params) %>
+      <% if service.success? %>
+        <% posts = service.posts %>
+        <% facets = service.facets %>
+
+        <%= render partial: 'searches/facets', locals: { facets: facets } %>
+
+        <div class="col-md-9">
+          <% posts.each do |post| %>
+            <%= render partial: 'posts/small_post', locals: { post: post, dual: true } %>
+          <% end %>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <% if service.total_pages > 0 %>
+          <div class="pagination-container col-md-10 col-md-offset-1">
+            <%= paginate posts %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= render 'shared/subscribe_form' %>
+    </div>
+  <% end %>
+<% end %>

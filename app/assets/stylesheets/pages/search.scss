@@ -1,7 +1,50 @@
+.search-page {
+  padding: 20px 0 0;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .facets-container {
+    h4 {
+      font-family: 'Josefin Sans';
+      font-size: 20px;
+    }
+
+    .facets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px;
+
+      li {
+        font-size: 14px;
+
+        a {}
+
+        &.selected {
+          font-weight: 700;
+
+          a {
+            color: #f50057;
+          }
+        }
+      }
+    }
+  }
+}
+
 .search-button {
-  font-size: 18px;
+  font-size: 16px;
   margin-left: 10px;
   cursor: pointer;
+  min-width: auto !important;
 }
 
 .search-bar {
@@ -14,57 +57,69 @@
   background: #fff;
   height: 60px;
   padding: 10px 0;
+
   input {
     width: 100%;
     text-align: center;
-    padding: 0;
-    font-size: 20px;
+    padding: 10px 0;
+    font-size: 32px;
     border: none;
-    &:focus{
+
+    &:focus {
       outline: none;
     }
+
+    &::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #dedede;
+    }
+
+    &::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #dedede;
+    }
+
+    &:-ms-input-placeholder {
+      /* IE 10+ */
+      color: #dedede;
+    }
+
+    &:-moz-placeholder {
+      /* Firefox 18- */
+      color: #dedede;
+    }
   }
+
   .cancel-button {
     position: absolute;
-    right: 20px;
-    top: 17px;
+    right: 30px;
+    top: 30px;
     font-size: 24px;
     cursor: pointer;
   }
 }
-
-.search {
-  padding: 20px 0 0;
-  h1 {
-    text-align: center;
-    font-size: 20px;
-  }
-  ul {
-    li {
-      font-size: 16px;
-      padding: 10px 0;
-    }
-  }
-  div.post-count {
-    text-align: center;
-    font-size: 14px;
-    color: #aaa;
-  }
-}
-
-.algolia-logo {
-  position: absolute;
-  right: 10px;
-  width: 70px;
-  opacity: .3;
-  margin-top: 20px;
-  img {
-    width: 100%;
-  }
-}
-
 @media (max-width: 768px) {
-  .algolia-logo {
-    width: 50px;
+  .search-button {
+    padding-left: 10px !important;
+  }
+
+  .search-bar {
+    height: 50px;
+    padding: 0;
+
+    .col-xs-12 {
+      padding: 0 5px;
+    }
+
+    input {
+      text-align: left !important;
+      font-size: 16px !important;
+    }
+
+    .cancel-button {
+      right: 15px;
+      top: 14px;
+      font-size: 18px;
+    }
   }
 }

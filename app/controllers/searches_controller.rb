@@ -1,3 +1,11 @@
 class SearchesController < ApplicationController
-  def show; end
+  def show
+    @params = search_params
+  end
+
+  private
+
+  def search_params
+    params.permit(:query, :page, :category, :company)
+  end
 end
