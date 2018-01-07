@@ -1,10 +1,10 @@
-.login-form {
-  max-width: 320px;
+.profile-form {
+  // max-width: 320px;
   margin: 100px auto;
 
   h3 {
     text-align: center;
-    line-height: 300%;
+    line-height: 26px;
     font-size: 26px;
     margin: 15px 0 5px;
     font-family: 'Josefin Sans';
@@ -19,19 +19,13 @@
     font-weight: 400;
   }
 
-  .checkbox {
-    label {
-      margin: -2px 0;
-      padding: 0;
-    }
-
-    &.agreement label {
-      padding: 0 0 0 20px !important;
-    }
+  .checkbox label {
+    margin: -2px 0;
+    padding: 0 0 0 20px;
   }
 
   .oauth-links {
-    margin: 60px 0;
+    margin: 15px 0;
 
     a.btn-social {
       border: none !important;
@@ -44,6 +38,10 @@
         left: 5px !important;
         width: 40px !important;
         line-height: 40px !important;
+      }
+
+      &.btn-active {
+        background: #c5c5c5;
       }
     }
   }

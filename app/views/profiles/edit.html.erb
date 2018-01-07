@@ -1,0 +1,91 @@
+<%= content_for :html_title, 'Profil Ayarları' %>
+
+<div class="profile-form">
+  <h3>Profil Ayarları</h3>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+      <%= form_for(current_user, :as => 'user', :url => update_profile_path, :html => { role: 'form'}) do |f| %>
+        <br>
+        <div class="form-group">
+          <%= f.label :name, value: 'Adınız Soyadınız' %>
+          <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, value: 'E-posta Adresiniz' %>
+          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+        </div>
+        <br>
+
+        <h3 style="font-size: 18px;">Parolamı Değiştir</h3>
+        <div class="form-group">
+          <%= f.label :current_password, value: 'Mevcut Parolanız' %>
+          <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, value: 'Parolanız' %>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, value: 'Parolanızı Tekrar Yazın' %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+        </div>
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :subscriber_agreement, checked: @user.subscriber? %>
+            Yeni röportajları e-posta ile takip etmek istiyorum
+          </label>
+        </div>
+        <br>
+
+        <%= f.submit "Güncelle", class: "btn btn-success" %>
+      <% end %>
+    </div>
+
+    <%- if Devise.mappings[:user].omniauthable? %>
+      <div class="col-sm-4">
+        <h3 style="font-size: 18px;">Bağlı Hesaplar</h3>
+        <div class="oauth-links">
+          <% User.omniauth_providers.each do |provider| %>
+            <% if @user.identities.pluck(:provider).include?(provider.to_s) %>
+              <%= link_to '#', class: "btn btn-block btn-social btn-#{provider} btn-active" do %>
+                <span class="fa fa-<%= provider %>"></span> <%= OmniAuth::Utils.camelize(provider) %> hesabınız aktif
+              <% end %>
+            <% else %>
+              <%= link_to omniauth_authorize_path(@user, provider), class: "btn btn-block btn-social btn-#{provider}" do %>
+                <span class="fa fa-<%= provider %>"></span> <%= OmniAuth::Utils.camelize(provider) %> hesabımı bağla
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        </div>
+    <% end -%>
+  </div>
+</div>
+
+<% if @user.errors.any? %>
+  <% message = "Lütfen form alanlarını doldurarak tekrar deneyin." %>
+  <% message = @user.errors.full_messages.join('\n') %>
+  <script type="text/javascript">
+    $(document).on('ready', function () {
+      sweetAlert({
+        type: "error",
+        title: "Hata",
+        text: "<%= message %>",
+        confirmButtonColor: '#00d888',
+        confirmButtonText: "Tamam"
+      });
+    });
+  </script>
+<% elsif flash[:success].present? %>
+  <script type="text/javascript">
+    $(document).on('ready', function () {
+      sweetAlert({
+        type: "success",
+        title: "Bilgi",
+        text: "<%= flash[:success] %>",
+        confirmButtonColor: '#00d888',
+        confirmButtonText: "Tamam"
+      });
+    });
+  </script>
+<% end %>

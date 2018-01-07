@@ -11,6 +11,8 @@ RSpec.describe User, type: :model do
 
   context 'associations' do
     it { should have_many(:galleries) }
+    it { should have_many(:likes) }
+    it { should have_many(:identities) }
   end
 
   context 'scopes' do
