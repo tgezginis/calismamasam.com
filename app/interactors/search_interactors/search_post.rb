@@ -30,7 +30,7 @@ module SearchInteractors
       filters = []
       filters << "categories:#{@params[:category]}" unless @params[:category].blank?
       filters << "company:#{@params[:company]}" unless @params[:company].blank?
-      filters << "product:#{@params[:product]}" unless @params[:product].blank?
+      filters << "products:#{@params[:product]}" unless @params[:product].blank?
       filters
     end
 

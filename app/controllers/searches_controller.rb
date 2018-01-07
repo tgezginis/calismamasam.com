@@ -6,6 +6,6 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.permit(:query, :page, :category, :company)
+    params.permit(:query, :page, :category, :company, :product)
   end
 end
