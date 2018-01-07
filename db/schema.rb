@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106114614) do
+ActiveRecord::Schema.define(version: 20180107112347) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -21,15 +24,15 @@ ActiveRecord::Schema.define(version: 20180106114614) do
   end
 
   create_table "categories_galleries", id: false, force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "gallery_id", null: false
+    t.bigint "category_id", null: false
+    t.bigint "gallery_id", null: false
     t.index ["category_id", "gallery_id"], name: "index_categories_galleries_on_category_id_and_gallery_id"
     t.index ["gallery_id", "category_id"], name: "index_categories_galleries_on_gallery_id_and_category_id"
   end
 
   create_table "categories_posts", id: false, force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "category_id"
+    t.bigint "post_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_categories_posts_on_category_id"
     t.index ["post_id"], name: "index_categories_posts_on_post_id"
   end
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 20180106114614) do
   end
 
   create_table "identities", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false
@@ -95,14 +98,14 @@ ActiveRecord::Schema.define(version: 20180106114614) do
     t.boolean "active", default: true, null: false
     t.string "reason"
     t.string "list"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_mailkick_opt_outs_on_email"
     t.index ["user_id", "user_type"], name: "index_mailkick_opt_outs_on_user_id_and_user_type"
   end
 
   create_table "post_images", force: :cascade do |t|
-    t.integer "post_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"
@@ -135,8 +138,8 @@ ActiveRecord::Schema.define(version: 20180106114614) do
   end
 
   create_table "posts_products", id: false, force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "product_id"
+    t.bigint "post_id"
+    t.bigint "product_id"
     t.index ["post_id"], name: "index_posts_products_on_post_id"
     t.index ["product_id"], name: "index_posts_products_on_product_id"
   end
@@ -186,8 +189,8 @@ ActiveRecord::Schema.define(version: 20180106114614) do
     t.string "file_content_type"
     t.integer "file_file_size"
     t.datetime "file_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["key"], name: "index_rails_admin_settings_on_key"
     t.index ["ns", "key"], name: "index_rails_admin_settings_on_ns_and_key", unique: true
   end
@@ -201,25 +204,6 @@ ActiveRecord::Schema.define(version: 20180106114614) do
     t.index ["token"], name: "index_subscribers_on_token", unique: true
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
-    t.integer "taggable_id"
-    t.string "taggable_type"
-    t.integer "tagger_id"
-    t.string "tagger_type"
-    t.string "context", limit: 128
-    t.datetime "created_at"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -229,8 +213,8 @@ ActiveRecord::Schema.define(version: 20180106114614) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
@@ -241,4 +225,6 @@ ActiveRecord::Schema.define(version: 20180106114614) do
     t.index ["token"], name: "index_users_on_token"
   end
 
+  add_foreign_key "identities", "users"
+  add_foreign_key "post_images", "posts"
 end
