@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get '/abone-ol' => 'subscribers#new', as: :new_subscriber
   post '/abone-ol' => 'subscribers#create', as: :create_subscriber
   get '/feed' => 'posts#feed', as: :feed, :format => 'rss'
+  get '/profilim' => 'profiles#edit', as: :edit_profile
+  patch '/profilim' => 'profiles#update', as: :update_profile
 
   get '/:id/like/(:token)' => 'posts#like', as: :like_post
   get '/:id/unlike/(:token)' => 'posts#unlike', as: :unlike_post

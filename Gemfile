@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.4.2'
 
 # Core
-gem 'acts-as-taggable-on', '~> 5.0'
 gem 'acts_as_list'
 gem 'ancestry'
 gem 'cancancan', '~> 2.0'

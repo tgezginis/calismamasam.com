@@ -13,8 +13,6 @@ class Post < ApplicationRecord
 
   cache_has_many :post_images, embed: true
 
-  acts_as_taggable_on :tags
-
   has_attached_file :image,
                     styles: { full: '1500x750#', normal: '500x250#', thumb: '200x200#' },
                     convert_options: {
@@ -44,9 +42,6 @@ class Post < ApplicationRecord
     end
     add_attribute :categories do
       categories.map(&:title)
-    end
-    add_attribute :tags do
-      tags.map(&:name)
     end
     add_attribute :image_url do
       image(:full)

@@ -1,25 +1,27 @@
 <% cache ["home-page", params.permit!, Post.active.maximum(:updated_at), Post.active.maximum(:published_at)] do %>
-  <div class="row">
-    <% feature_post = Post.active.first %>
-    <% if !params[:page] || params[:page] == 1 %>
-      <%= render partial: 'posts/post', locals: { post: feature_post, size: :big } %>
-    <% end %>
-
-    <% posts = Post.active.where.not(id: feature_post.id).page(params[:page] || 1).per(20)  %>
-    <div class="col-md-12">
-      <% posts.each do |post| %>
-        <%= render partial: 'posts/small_post', locals: { post: post, dual: true } %>
+  <% if Post.active.any? %>
+    <div class="row">
+      <% feature_post = Post.active.first %>
+      <% if !params[:page] || params[:page] == 1 %>
+        <%= render partial: 'posts/post', locals: { post: feature_post, size: :big } %>
       <% end %>
-    </div>
 
-    <div class="clearfix"></div>
-
-    <% if posts.total_pages > 0 %>
-      <div class="pagination-container col-md-10 col-md-offset-1">
-        <%= paginate posts %>
+      <% posts = Post.active.where.not(id: feature_post.id).page(params[:page] || 1).per(20)  %>
+      <div class="col-md-12">
+        <% posts.each do |post| %>
+          <%= render partial: 'posts/small_post', locals: { post: post, dual: true } %>
+        <% end %>
       </div>
-    <% end %>
 
-    <%= render 'shared/subscribe_form' %>
-  </div>
+      <div class="clearfix"></div>
+
+      <% if posts.total_pages > 0 %>
+        <div class="pagination-container col-md-10 col-md-offset-1">
+          <%= paginate posts %>
+        </div>
+      <% end %>
+
+      <%= render 'shared/subscribe_form' %>
+    </div>
+  <% end %>
 <% end %>
