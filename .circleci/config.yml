@@ -63,10 +63,6 @@ jobs:
               ssh-keyscan -H dokku.calismamasam.com >> ~/.ssh/known_hosts
               git remote add dokku dokku@dokku.calismamasam.com:calismamasam
               git push dokku master
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              ssh-keyscan -H dokku.calismamasam.com >> ~/.ssh/known_hosts
-              git remote add dokku dokku@dokku.calismamasam.com:cm-staging
-              git push dokku -f develop:master
             else
               echo "Not master or develop branch so not deploying"
             fi

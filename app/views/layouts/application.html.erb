@@ -68,8 +68,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <div class="search-bar">
           <div class="container">
-            <div class="col-md-6 col-md-offset-3">
-              <input id="search-input" type="text" value="<%= params[:q] %>">
+            <div class="col-md-6 col-md-offset-3 col-xs-12">
+              <input id="search-input" type="text" value="<%= params[:q] %>" placeholder="aramak istediğiniz ismi yazın">
             </div>
             <i class="cancel-button fa fa-close"></i>
           </div>
@@ -90,11 +90,9 @@
           <li>
             <%= nav_link_to "istatistikler", stats_path %>
           </li>
-          <li style="display: none">
-            <a href="<%= about_path %>" onclick="ga('send', 'event', 'header-navigation', 'Hakkında');">hakkında</a>
-          </li>
-          <li class="search-button" style="display: none">
-            <i class="fa fa-search" onclick="ga('send', 'event', 'header-navigation', 'Arama');"></i>
+          <li class="search-button">
+            <span class="hidden-xs"><i class="fa fa-search" onclick="ga('send', 'event', 'header-navigation', 'Arama');"></i></span>
+            <span class="visible-xs">arama</span>
           </li>
         </ul>
       </div>

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get '/galeri/:id/like/(:token)' => 'galleries#like', as: :like_gallery
   get '/galeri/:id/unlike/(:token)' => 'galleries#unlike', as: :unlike_gallery
   get '/galeri/:id' => 'galleries#show', as: :gallery
-  get '/ara/:q' => 'searches#show', as: :search
+  get '/ara/:query' => 'searches#show', as: :search
   get '/istatistikler/(:id)/(:post_category_id)' => 'stats#index', as: :stats
   get '/ekipman/:id' => 'products#show', as: :product
   get '/abone-ol' => 'subscribers#new', as: :new_subscriber

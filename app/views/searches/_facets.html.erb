@@ -1,0 +1,17 @@
+<div class="col-md-3 facets-container hidden-xs">
+  <% facets.each do |key, values| %>
+    <% facet_name = "company" if key == "Çalıştığı Şirket" %>
+    <% facet_name = "category" if key == "Kategoriler" %>
+    <% facet_name = "product" if key == "Kullandığı Ürünler" %>
+    <h4><%= key %></h4>
+    <ul class="facets">
+      <% values.each do |name, value| %>
+        <% if (@params[:category] && @params[:category] == name) || (@params[:company] && @params[:company] == name) %>
+          <li class="selected"><%= link_to raw("#{name} <span class=\"post-count\">(#{value})</span>"), @params.merge(page: nil, facet_name => nil) %></li>
+        <% else %>
+          <li class=""><%= link_to raw("#{name} <span class=\"post-count\">(#{value})</span>"), @params.merge(page: nil, facet_name => name) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
