@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SearchesController, type: :controller do
   describe 'GET show' do
     before do
-      get :show, params: { q: 'Test' }
+      get :show, params: { query: 'Test' }
     end
 
     it 'should be success' do

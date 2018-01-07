@@ -1,0 +1,36 @@
+$(document).on('ready', function () {
+  $(".search-button").click(function() {
+    $(".search-bar").show();
+    $(".search-bar input").focusTextToEnd();
+  });
+
+  $(".cancel-button").click(function() {
+    $(".search-bar").hide();
+  });
+
+  $("#search-input").enterKey(function () {
+    var value = $("#search-input").val();
+    if (value.length) {
+      window.location.href = "/ara/" + value;
+    }
+  });
+});
+
+
+$.fn.focusTextToEnd = function(){
+  this.focus();
+  var $thisVal = this.val();
+  this.val('').val($thisVal);
+  return this;
+};
+
+$.fn.enterKey = function (fnc) {
+  return this.each(function () {
+    $(this).keypress(function (ev) {
+      var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+      if (keycode == '13') {
+        fnc.call(this, ev);
+      }
+    })
+  })
+};
