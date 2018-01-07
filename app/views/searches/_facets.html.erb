@@ -2,7 +2,7 @@
   <% facets.each do |key, values| %>
     <% facet_name = "company" if key == "Çalıştığı Şirket" %>
     <% facet_name = "category" if key == "Kategoriler" %>
-    <% facet_name = "product" if key == "Kullandığı Ürünler" %>
+    <% facet_name = "product" if key == "Kullanılan Ekipmanlar" %>
     <h4><%= key %></h4>
     <ul class="facets">
       <% values.each do |name, value| %>

@@ -4,7 +4,7 @@
   <% if Post.active.any? %>
     <div class="row search-page">
       <h1><%= @params[:query] %> araması için sonuçlar</h1>
-      <% service = SearchInteractors::SearchPost.call(query: @params[:query], page: @params[:page], per_page: 20, params: @params) %>
+      <% service = SearchInteractors::SearchPost.call(query: @params[:query], page: @params[:page], per_page: 10, params: @params) %>
       <% if service.success? %>
         <% posts = service.posts %>
         <% facets = service.facets %>

@@ -37,7 +37,7 @@ module SearchInteractors
     def set_facets
       @facets.keys.each do |k|
         @facets['Kategoriler'] = @facets.delete(k) if k == 'categories'
-        @facets['Kullandığı Ürünler'] = @facets.delete(k) if k == 'products'
+        @facets['Kullanılan Ekipmanlar'] = @facets.delete(k) if k == 'products'
         @facets['Çalıştığı Şirket'] = @facets.delete(k) if k == 'company'
       end
       @facets = @facets.sort_by { |k, _v| k }
