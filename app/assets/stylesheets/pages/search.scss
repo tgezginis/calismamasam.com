@@ -39,11 +39,21 @@
       }
     }
   }
+
   .algolia {
     text-align: center;
     margin: 60px 0 0;
+
     img {
       width: 150px;
+    }
+  }
+
+  article.post.small-post.dual-post {
+    margin: 0 0 40px !important;
+
+    &:nth-child(even) {
+      padding-top: 0 !important;
     }
   }
 }
@@ -107,6 +117,11 @@
   }
 }
 @media (max-width: 768px) {
+  .search-page h1 {
+    margin-bottom: 30px;
+    font-size: 24px !important;
+  }
+
   .search-button {
     padding-left: 10px !important;
   }

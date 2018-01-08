@@ -1,4 +1,5 @@
 // Desktop
+
 article.post {
   margin-top: 20px;
   margin-bottom: 60px;
@@ -68,6 +69,7 @@ article.post {
       margin: 10px 0 0;
       overflow-wrap: break-word;
       text-align: left;
+      max-height: 70px;
     }
 
     &.center {
@@ -397,8 +399,8 @@ article.post {
       }
 
       &.products-table {
-        > tbody,
-        > thead {
+        > thead,
+        > tbody {
           > tr > td {
             &:nth-child(odd) {
               border-right: solid 1px #e0e0e0;
@@ -413,7 +415,6 @@ article.post {
     }
   }
 }
-
 // Mobile
 @media (max-width: 768px) {
   .post .tags {
@@ -436,7 +437,6 @@ article.post {
     margin-top: 10px !important;
   }
 }
-
 // Tablet
 @media (max-width: 1024px) {
   .post-page {
