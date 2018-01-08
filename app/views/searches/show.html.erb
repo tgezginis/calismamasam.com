@@ -4,8 +4,9 @@
   <% if Post.active.any? %>
     <div class="row search-page">
       <h1><%= @params[:query] %> araması için sonuçlar</h1>
+
       <% service = SearchInteractors::SearchPost.call(query: @params[:query], page: @params[:page], per_page: 10, params: @params) %>
-      <% if service.success? %>
+      <% if service.posts_count > 0 %>
         <% posts = service.posts %>
         <% facets = service.facets %>
 
@@ -24,9 +25,19 @@
             <%= paginate posts %>
           </div>
         <% end %>
+      <% else %>
+        <div class="error-page">
+          <p>Sonuç bulunamadı!</p>
+          <%= image_tag "error.png" %>
+          <br>
+          <a href="/" class="btn btn-success btn-md">Anasayfaya dön</a>
+          <br>
+        </div>
       <% end %>
 
-      <%= render 'shared/subscribe_form' %>
+      <div class="algolia">
+        <%= image_tag 'algolia-logo.svg' %>
+      </div>
     </div>
   <% end %>
 <% end %>

@@ -36,9 +36,9 @@ class Post < ApplicationRecord
   before_save :generate_file_name, if: :image_file_name_changed?
 
   algoliasearch per_environment: true do
-    attribute :is_active, :title, :job_title, :company, :body, :slug, :published_at
-    add_attribute :publish_date do
-      I18n.l published_at, format: :short unless published_at.nil?
+    attribute :is_active, :title, :job_title, :company, :body, :slug
+    add_attribute :published_at do
+      published_at.present? ? published_at.to_i : (Time.current + 10.years).to_i
     end
     add_attribute :categories do
       categories.map(&:title)
@@ -46,11 +46,17 @@ class Post < ApplicationRecord
     add_attribute :products do
       products.map(&:name)
     end
-    add_attribute :image_url do
-      image(:full)
+    tags do
+      tags = []
+      tags << 'published' if decorate.active?
+      tags
     end
+
     customRanking ['desc(published_at)']
     attributesForFaceting %i[company categories products]
+    minWordSizefor1Typo 8
+    minWordSizefor2Typos 10
+    hitsPerPage 20
   end
 
   private

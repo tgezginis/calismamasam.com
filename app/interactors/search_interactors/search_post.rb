@@ -3,11 +3,11 @@ module SearchInteractors
     include Interactor
 
     def call
-      @params = context.params
-      @query = context.query
+      @params = context.params || {}
+      @query = context.query || nil
+      return_error('Aranan kelime boş bırakılamaz') if @query.blank?
       @per_page = context.per_page || 20
       @page = context.page || 0
-      return_error('Aranan kelime boş bırakılamaz') if @query.blank?
       @posts = Post.search(@query, search_parameters)
       @facets = @posts.facets
       set_facets
@@ -18,6 +18,10 @@ module SearchInteractors
 
     def search_parameters
       {
+        tagFilters: ['published'],
+        numericFilters: [
+          "published_at < #{Time.current.to_i}"
+        ],
         facets: %w[categories company products],
         facetFilters: facet_filters,
         maxValuesPerFacet: 20,
