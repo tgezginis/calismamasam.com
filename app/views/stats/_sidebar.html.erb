@@ -15,6 +15,10 @@
         selectedBackColor: '#dadada'
       });
 
+      $('#tree').on('nodeSelected', function(event, data) {
+        window.location = $('#tree').treeview('getSelected')[0]['href'];
+      });
+
       $('#tree').treeview('collapseAll', { silent: true });
 
       windowsize = $(window).width();
