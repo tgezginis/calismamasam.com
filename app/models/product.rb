@@ -26,6 +26,10 @@ class Product < ApplicationRecord
 
   before_save :generate_file_name, if: :image_file_name_changed?
 
+  def name_with_brand
+    decorate.name_with_brand
+  end
+
   private
 
   def generate_file_name
@@ -33,9 +37,5 @@ class Product < ApplicationRecord
     random = Random.new.rand(10..1000)
     file_name = "#{name.parameterize}-#{random}"
     image.instance_write(:file_name, "#{file_name}#{extension}")
-  end
-
-  def name_with_brand
-    decorate.name_with_brand
   end
 end
