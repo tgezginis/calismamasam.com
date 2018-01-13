@@ -44,7 +44,7 @@ class Post < ApplicationRecord
       categories.map(&:title)
     end
     add_attribute :products do
-      products.map(&:name)
+      products.map(&:name_with_brand)
     end
     tags do
       tags = []
