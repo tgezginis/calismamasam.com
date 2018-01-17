@@ -17,7 +17,7 @@ footer {
       text-align: center;
       float: none;
       margin: 0 15px;
-      padding: 10px 0;
+      padding: 10px 0 30px;
 
       a {
         font-size: 14px!important;
@@ -30,6 +30,10 @@ footer {
         }
       }
     }
+  }
+
+  .github-link {
+    margin: 0 0 15px;
   }
 
   .footer-copyright {

@@ -1,18 +1,13 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="1000.000000pt" height="1000.000000pt" viewBox="0 0 1000.000000 1000.000000"
- preserveAspectRatio="xMidYMid meet">
-<metadata>
-Created by potrace 1.11, written by Peter Selinger 2001-2013
-</metadata>
-<g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M0 5000 l0 -5000 375 0 375 0 0 520 0 520 4250 0 4250 0 0 -520 0
--520 375 0 375 0 0 5000 0 5000 -5000 0 -5000 0 0 -5000z m9250 520 l0 -3730
--4250 0 -4250 0 0 3730 0 3730 4250 0 4250 0 0 -3730z"/>
-<path d="M1490 5525 l0 -2985 3510 0 3510 0 0 2985 0 2985 -3510 0 -3510 0 0
--2985z"/>
-</g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1502px" height="1502px" viewBox="0 0 1502 1502" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>safari-pinned-tab</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="safari-pinned-tab" fill-rule="nonzero">
+            <circle id="Oval" fill="#E61B5A" cx="397.6" cy="951.5" r="110"></circle>
+            <path d="M667.2,0.2 L0.2,667.2 L196.2,863.2 C206.9,838.8 222.3,815.9 242.2,796 C262.5,775.7 285.7,760.3 310.6,749.7 L228,667.2 L667.2,228.2 L1273.2,834.2 L834.2,1273.2 L599.6,1038.8 C588.9,1063.7 573.4,1086.9 553.2,1107.1 C533.2,1127.1 510.4,1142.4 486,1153.1 L834.2,1501.3 L1501.2,834.3 L667.2,0.2 Z" id="Shape" fill="#37474F"></path>
+        </g>
+    </g>
 </svg>
