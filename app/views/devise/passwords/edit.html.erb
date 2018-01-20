@@ -2,7 +2,6 @@
 <h2>Parolanı Değiştir</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="form-group">
@@ -21,5 +20,20 @@
   <div class="actions">
     <%= f.submit "Değiştir", class: 'btn btn-success' %>
   </div>
+<% end %>
+
+<% if !resource.errors.empty? %>
+  <% message = resource.errors.full_messages.join('\n') %>
+  <script>
+    $(document).on('ready', function () {
+      sweetAlert({
+        type: "error",
+        title: "Hata",
+        text: "<%= message %>",
+        confirmButtonColor: "#00d888",
+        confirmButtonText: "Tamam"
+      });
+    });
+  </script>
 <% end %>
 </div>
