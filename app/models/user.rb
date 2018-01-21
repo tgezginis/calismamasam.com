@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   TEMP_EMAIL_PREFIX = 'change@me'.freeze
   TEMP_EMAIL_REGEX = /\Achange@me/
-  devise :database_authenticatable, :rememberable, :trackable, :validatable, :registerable, :omniauthable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable, :omniauthable
 
   cache_index :token, unique: true
 

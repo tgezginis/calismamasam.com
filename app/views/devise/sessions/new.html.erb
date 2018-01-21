@@ -20,6 +20,7 @@
       <% end -%>
 
       <%= f.submit "Giriş Yap", class: "btn btn-success" %>
+      <%= link_to 'Parolamı Unuttum!', new_user_password_path, :class => "password-reset" %>
     <% end %>
 
     <%= render 'devise/shared/omniauth_links' %>

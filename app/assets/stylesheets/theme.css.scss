@@ -120,6 +120,14 @@ img {
   }
 }
 
+.password-reset {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
 // Mobile
 @media (max-width: 768px) {
   h1 {
