@@ -55,4 +55,6 @@ Sunucuyu çalıştır;
 Çalışma Masam tamamen açık kaynak olarak geliştirilmektedir. Siz de bizlere öneri ya da şikayetlerinizi [bildirebilir](https://github.com/calismamasam/calismamasam.com/issues), yapacağınız geliştirmeler ile bize katkıda bulunabilirsiniz.
 
 ## Katkıda bulunanlar
-* Tolga Gezginiş
+* [Tolga Gezginiş](https://github.com/tgezginis)
+* [Ender Ahmet Yurt](https://github.com/enderahmetyurt)
+* [Samet Aylak](https://github.com/roguearch)
