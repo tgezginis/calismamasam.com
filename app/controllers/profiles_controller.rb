@@ -19,6 +19,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def voted
+    @user = current_user
+    render 'voted'
+  end
+
   private
 
   def user_params
