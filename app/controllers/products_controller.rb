@@ -14,14 +14,14 @@ class ProductsController < ApplicationController
   end
 
   def vote
-    if !current_user.liked? @product
-      @product.liked_by current_user
-    elsif current_user.liked? @product
-      @product.unliked_by current_user
+    if !@product.liked? current_user
+      current_user.like(Product, @product.id)
+    elsif @product.liked? current_user
+      current_user.unlike(Product, @product.id)
     end
 
     respond_to do |format|
-      isVoted = current_user.liked? @product
+      isVoted = @product.liked? current_user
       format.json { render json: { :status => isVoted } }
     end
   end

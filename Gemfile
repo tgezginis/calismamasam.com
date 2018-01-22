@@ -3,7 +3,6 @@ ruby '2.4.2'
 
 # Core
 gem 'acts_as_list'
-gem 'acts_as_votable', '~> 0.11.1'
 gem 'ancestry'
 gem 'cancancan', '~> 2.0'
 gem 'cityhash'

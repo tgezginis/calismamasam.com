@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   include IdentityCache
 
-  acts_as_voter
-
   TEMP_EMAIL_PREFIX = 'change@me'.freeze
   TEMP_EMAIL_REGEX = /\Achange@me/
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable, :omniauthable

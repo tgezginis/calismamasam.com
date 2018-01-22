@@ -1,9 +1,10 @@
 <% content_for :html_title, "Favori Ekipmanlarım" %>
 
-<% if @user.find_liked_items.any? %>
+<% if @votedProducts.any? %>
 <div class="row" style="margin-top:25px;">
-<% @user.find_liked_items.each do |product| %>
+<% @votedProducts.each do |voted| %>
   <div class="col-sm-6 col-md-4">
+    <% product = Product.find(voted.likeable_id) %>
     <%= link_to product_path(product) do %>
       <div class="thumbnail">
         <%= image_tag product.image(:thumb) %>

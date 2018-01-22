@@ -1,7 +1,5 @@
 class Product < ApplicationRecord
-  include IdentityCache
-
-  acts_as_votable
+  include Likeable
 
   extend FriendlyId
   friendly_id :name_with_brand, use: :slugged
