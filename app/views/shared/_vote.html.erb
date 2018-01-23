@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <% if product.liked? current_user%>
+    <i class="fa fa-minus product-vote"></i>
+  <% else %>
+    <i class="fa fa-plus product-vote"></i>
+  <% end %>
+<% end %>

@@ -1,0 +1,21 @@
+<% content_for :html_title, "Favori Ekipmanlarım" %>
+
+<% if @votedProducts.any? %>
+<div class="row" style="margin-top:25px;">
+<% @votedProducts.each do |voted| %>
+  <div class="col-sm-6 col-md-4">
+    <% product = Product.find(voted.likeable_id) %>
+    <%= link_to product_path(product) do %>
+      <div class="thumbnail">
+        <%= image_tag product.image(:thumb) %>
+        <div class="caption">
+          <h3 class="text-center"><%= product.name_with_brand %></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+</div>
+<% else %>
+  <h2 class="text-center" style="margin-top:50px;font-family: 'Josefin Sans'">Favori ekipmanlarınız boş!</h2>
+<% end %>
