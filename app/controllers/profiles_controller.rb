@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
 
   def voted
     @user = current_user
-    @votedProducts = @user.likes.where(likeable_type: 'Product')
+    @voted_products = @user.likes.where(likeable_type: 'Product')
     render 'voted'
   end
 

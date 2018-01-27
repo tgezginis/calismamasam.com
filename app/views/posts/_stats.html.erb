@@ -21,8 +21,8 @@
                   </td>
                   <td>
                     <div class="product-title">
-                      <%= link_to product.decorate.name_with_brand, product_path(product) %>
                       <%= render "shared/vote", product: product %>
+                      <%= link_to product.decorate.name_with_brand, product_path(product) %>
                     </div>
                   </td>
                 </tr>
@@ -42,8 +42,8 @@
                   </td>
                   <td>
                     <div class="product-title">
-                      <%= link_to product.decorate.name_with_brand, product_path(product) %>
                       <%= render "shared/vote", product: product %>
+                      <%= link_to product.decorate.name_with_brand, product_path(product) %>
                     </div>
                   </td>
                 </tr>
@@ -54,20 +54,4 @@
       </tbody>
     </table>
   </div>
-  <% if user_signed_in? %>
-    <script>
-      $(document).on('ready', function () {
-        $('.product-vote').click(function (e) {
-          var parent = $(this).parent();
-          var voteUrl = parent.find('a').attr('href') + '/vote';
-          $.get(voteUrl, function (data) {
-            if(data.status)
-              parent.find('i').removeClass('fa-plus').addClass('fa-minus');
-            else
-              parent.find('i').removeClass('fa-minus').addClass('fa-plus');
-          });
-        });
-      });
-    </script>
-  <% end %>
 <% end %>

@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     elsif @product.liked? current_user
       current_user.unlike(Product, @product.id)
     end
+    @product.touch
 
     respond_to do |format|
       isVoted = @product.liked? current_user

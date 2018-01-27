@@ -130,12 +130,8 @@ img {
 
 .product-vote {
   cursor: pointer;
-  &.fa-minus {
-    color: red;
-  }
-  &.fa-plus {
-    color: green;
-  }
+  color: red;
+  margin-right: 5px;
 }
 
 // Mobile
