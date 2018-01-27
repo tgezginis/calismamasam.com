@@ -1,0 +1,25 @@
+<div class="row">
+  <article class="favorites col-xs-10 col-xs-offset-1">
+    <h1>Favorilerim</h1>
+    <div class="row">
+      <% if @voted_products.any? %>
+        <% @voted_products.each do |voted| %>
+          <% product = Product.find(voted.likeable_id) %>
+          <div class="col-md-3 col-xs-4">
+            <div class="image">
+              <%= link_to image_tag(product.image :thumb), product_path(product) %>
+            </div>
+            <div class="title">
+              <%= link_to product.name_with_brand, product_path(product) %>
+            </div>
+            <span><%= product.category.title %></span>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-md-12 no-voted-product">
+          Favorilerinizde herhangi bir ekipman bulunmuyor.
+        </div>
+      <% end %>
+    </div>
+  </article>
+</div>

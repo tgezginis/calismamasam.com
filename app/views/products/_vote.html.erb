@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <div class="product-vote-panel">
+    <% if @product.liked? current_user%>
+      <i class="fa fa-heart product-vote active"></i>
+      <span class="product-vote">Favorilerimden çıkar</span>
+    <% else %>
+      <i class="fa fa-heart-o product-vote"></i>
+      <span class="product-vote">Favorilerime ekle</span>
+    <% end %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $('.product-vote').click(function (e) {
+    var voteUrl = '<%= product_path(@product) %>/vote';
+    $.get(voteUrl, function (data) {
+      if(data.status) {
+        $('i.product-vote').removeClass('fa-heart-o').addClass('fa-heart active');
+        $('span.product-vote').html('Favorilerimden çıkar');
+      }
+      else {
+        $('i.product-vote').removeClass('fa-heart active').addClass('fa-heart-o');
+        $('span.product-vote').html('Favorilerime ekle');
+      }
+    });
+  });
+</script>

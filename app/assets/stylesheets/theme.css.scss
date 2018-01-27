@@ -128,10 +128,17 @@ img {
   margin-top: 10px;
 }
 
-.product-vote {
+i.product-vote {
   cursor: pointer;
-  color: red;
   margin-right: 5px;
+
+  &.active {
+    color: red;
+  }
+}
+
+span.product-vote {
+  cursor: pointer;
 }
 
 // Mobile

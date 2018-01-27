@@ -96,4 +96,17 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+
+  <script type="text/javascript">
+    $('.product-vote').click(function (e) {
+      var parent = $(this).parent().parent();
+      var voteUrl = parent.find('a').attr('href') + '/vote';
+      $.get(voteUrl, function (data) {
+        if(data.status)
+          parent.find('i').removeClass('fa-heart-o').addClass('fa-heart active');
+        else
+          parent.find('i').removeClass('fa-heart active').addClass('fa-heart-o');
+      });
+    });
+  </script>
 <% end %>
