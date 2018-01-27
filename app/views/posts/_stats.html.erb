@@ -20,7 +20,10 @@
                     <% end %>
                   </td>
                   <td>
-                    <div class="product-title"><%= link_to product.decorate.name_with_brand, product_path(product) %></div>
+                    <div class="product-title">
+                      <%= render "shared/vote", product: product %>
+                      <%= link_to product.decorate.name_with_brand, product_path(product) %>
+                    </div>
                   </td>
                 </tr>
               <% end %>
@@ -38,7 +41,10 @@
                     <% end %>
                   </td>
                   <td>
-                    <div class="product-title"><%= link_to product.decorate.name_with_brand, product_path(product) %></div>
+                    <div class="product-title">
+                      <%= render "shared/vote", product: product %>
+                      <%= link_to product.decorate.name_with_brand, product_path(product) %>
+                    </div>
                   </td>
                 </tr>
               <% end %>

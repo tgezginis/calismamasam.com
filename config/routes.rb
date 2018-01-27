@@ -32,10 +32,12 @@ Rails.application.routes.draw do
   get '/ara/:query' => 'searches#show', as: :search
   get '/istatistikler/(:id)/(:post_category_id)' => 'stats#index', as: :stats
   get '/ekipman/:id' => 'products#show', as: :product
+  get '/ekipman/:id/vote' => 'products#vote', as: :vote_product
   get '/abone-ol' => 'subscribers#new', as: :new_subscriber
   post '/abone-ol' => 'subscribers#create', as: :create_subscriber
   get '/feed' => 'posts#feed', as: :feed, :format => 'rss'
   get '/profilim' => 'profiles#edit', as: :edit_profile
+  get '/profilim/favori-ekipmanlarim' => 'profiles#voted', as: :voted_products
   patch '/profilim' => 'profiles#update', as: :update_profile
 
   get '/:id/like/(:token)' => 'posts#like', as: :like_post

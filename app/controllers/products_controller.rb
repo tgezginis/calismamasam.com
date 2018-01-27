@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: %i[show]
+  before_action :authenticate_user!, only: [:vote]
+  before_action :find_product, only: [:show, :vote]
+
   def show
     @posts = @product.posts.active
 
@@ -9,6 +11,20 @@ class ProductsController < ApplicationController
     end
 
     @chart_data = result.chart_data if result.success?
+  end
+
+  def vote
+    if !@product.liked? current_user
+      current_user.like(Product, @product.id)
+    elsif @product.liked? current_user
+      current_user.unlike(Product, @product.id)
+    end
+    @product.touch
+
+    respond_to do |format|
+      isVoted = @product.liked? current_user
+      format.json { render json: { :status => isVoted } }
+    end
   end
 
   private

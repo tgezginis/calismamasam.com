@@ -76,6 +76,17 @@ $(document).on('ready', function () {
   $(window).resize(function() {
     setProductCategoriesFontSizes();
   });
+
+  $('.product-vote').click(function (e) {
+    var parent = $(this).parent();
+    var voteUrl = parent.find('a').attr('href') + '/vote';
+    $.get(voteUrl, function (data) {
+      if(data.status)
+        parent.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+      else
+        parent.find('i').removeClass('fa-heart').addClass('fa-heart-o');
+    });
+  });
 });
 
   function likeLogin() {

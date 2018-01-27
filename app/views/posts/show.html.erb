@@ -4,7 +4,7 @@
 <%= content_for :html_meta_image, @post.image(:full) %>
 <% @liked = current_user.present? ? @post.liked?(current_user) : false %>
 
-<% cache ["post", @post.id, @post.updated_at, @post.categories, @post.fetch_post_images, current_user&.id, @liked] do %>
+<% cache ["post", @post.id, @post.updated_at, @post.categories, @post.fetch_post_images, current_user&.id, @post.products, @liked] do %>
   <div class="row post-page">
     <article class="post col-md-10 col-md-offset-1 container">
       <h1><%= @post.title %></h1>

@@ -19,6 +19,12 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def voted
+    @user = current_user
+    @voted_products = @user.likes.where(likeable_type: 'Product')
+    render 'voted'
+  end
+
   private
 
   def user_params
