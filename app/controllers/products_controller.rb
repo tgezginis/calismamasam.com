@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     @product.touch
 
     respond_to do |format|
-      format.json { render json: { :status => @product.liked? current_user } }
+      format.json { render json: { :status => @product.liked?(current_user) } }
     end
   end
 
