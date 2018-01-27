@@ -9,6 +9,7 @@
         <div class="product-image">
           <%= image_tag @product.image(:full) %>
         </div>
+        <%= render 'vote' %>
       </div>
       <div class="col-md-9">
         <%= render 'chart' %>

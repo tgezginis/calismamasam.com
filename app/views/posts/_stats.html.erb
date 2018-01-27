@@ -14,6 +14,9 @@
             <tbody>
               <% @post.products.where(category_id: ProductCategory.find_by(title: 'Donanım')&.subtree_ids).each do |product| %>
                 <tr>
+                  <td width="20">
+                    <%= render "posts/vote", product: product %>
+                  </td>
                   <td width="45">
                     <%= link_to product_path(product) do %>
                       <%= image_tag(product.image(:thumb), width: '30', alt: product.decorate.name_with_brand, title: product.decorate.name_with_brand) %>
@@ -21,7 +24,6 @@
                   </td>
                   <td>
                     <div class="product-title">
-                      <%= render "shared/vote", product: product %>
                       <%= link_to product.decorate.name_with_brand, product_path(product) %>
                     </div>
                   </td>
@@ -35,6 +37,9 @@
             <tbody>
               <% @post.products.where(category_id: ProductCategory.find_by(title: 'Yazılım')&.subtree_ids).each do |product| %>
                 <tr>
+                  <td width="20">
+                    <%= render "posts/vote", product: product %>
+                  </td>
                   <td width="45">
                     <%= link_to product_path(product) do %>
                       <%= image_tag(product.image(:thumb), width: '30', alt: product.decorate.name_with_brand, title: product.decorate.name_with_brand) %>
@@ -42,7 +47,6 @@
                   </td>
                   <td>
                     <div class="product-title">
-                      <%= render "shared/vote", product: product %>
                       <%= link_to product.decorate.name_with_brand, product_path(product) %>
                     </div>
                   </td>
