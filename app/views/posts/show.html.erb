@@ -2,6 +2,7 @@
 <%= content_for :html_description, @post.description unless @post.description.nil? || @post.description == '' %>
 <%= content_for :html_twitter_description, @post.job_and_company %>
 <%= content_for :html_meta_image, @post.image(:full) %>
+<%= content_for :html_meta_post_published_time, @post.published_at, format: :short %>
 <% @liked = current_user.present? ? @post.liked?(current_user) : false %>
 
 <% cache ["post", @post.id, @post.updated_at, @post.categories, @post.fetch_post_images, current_user&.id, @post.products, @liked] do %>

@@ -6,6 +6,7 @@
   <% twitter_description = !(html_twitter_description = yield :html_twitter_description).blank? ? html_twitter_description : description %>
   <% keywords = !(html_keywords = yield :html_keywords).blank? ? html_keywords : Settings.keywords %>
   <% meta_image = !(html_meta_image = yield :html_meta_image).blank? ? html_meta_image : "https://calismamasam.com/logo-centered.png" %>
+  <% meta_post_published_time = !(html_meta_post_published_time = yield :html_meta_post_published_time).blank? ? html_meta_post_published_time : nil %>
 
   <title><%= title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +14,10 @@
   <meta name="description" content="<%= description %>">
   <meta name="author" content="Tolga Gezginiş">
   <meta name="keywords" content="<%= !(html_keywords = yield :html_keywords).blank? ? html_keywords : Settings.keywords %>">
+
+  <% if meta_post_published_time %>
+  <meta property="article:published_time" content="<%= meta_post_published_time %>" />
+  <% end %>
 
   <meta property="og:locale" content="tr_TR" />
   <meta property="og:type" content="article" />
