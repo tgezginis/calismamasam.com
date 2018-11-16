@@ -8,7 +8,7 @@
 //= require Chart.bundle
 //= require chartkick
 //= require bootstrap-treeview.min
-//= require muuri.min
+//= require macy
 //= require lazysizes.min
 //= require cocoon
 //= require_tree .

@@ -57,18 +57,27 @@ $(document).on('ready', function () {
   });
 
   if ($('.grid').length) {
-    grid = new Muuri('.grid', {
-      layoutOnInit: true,
-      layout: {
-        fillGaps: true,
-      }
+    $('.grid').css('opacity', '0');
+    var macy = Macy({
+        container: '.grid',
+        trueOrder: false,
+        waitForImages: true,
+        mobileFirst: true,
+        margin: 20,
+        columns: 4,
+        breakAt: {
+            1200: 4,
+            940: 3,
+            520: 2,
+            400: 1
+        }
     });
-    window.addEventListener('load', function () {
+    macy.runOnImageLoad(function () {
       setTimeout(function(){
+        macy.recalculate(true);
         $('.grid').css('opacity', '1');
-        grid.refreshItems().layout();
-      }, 500);
-    });
+      }, 100);
+    }, true);
   }
 
   setProductCategoriesFontSizes();

@@ -1,0 +1,91 @@
+<!doctype html>
+<html amp>
+  <head>
+    <% title = !(html_title = yield :html_title).blank? ? "#{html_title} - #{Settings.title}" : Settings.title %>
+    <% description = !(html_description = yield :html_description).blank? ? html_description : Settings.description %>
+    <% twitter_description = !(html_twitter_description = yield :html_twitter_description).blank? ? html_twitter_description : description %>
+    <% keywords = !(html_keywords = yield :html_keywords).blank? ? html_keywords : Settings.keywords %>
+    <% meta_image = !(html_meta_image = yield :html_meta_image).blank? ? html_meta_image : "https://calismamasam.com/logo-centered.png" %>
+    <% meta_post_published_time = !(html_meta_post_published_time = yield :html_meta_post_published_time).blank? ? html_meta_post_published_time : nil %>
+
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <link rel="canonical" href="<%= rails_amp_canonical_url %>" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <!-- Set page data type by JSON-LD with schema.org. -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "*****",
+        "mainEntityOfPage": "*****",
+        "datePublished": "<%= meta_post_published_time %>"
+      }
+    </script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora|Open+Sans|Josefin+Sans:300,400,700&subset=latin-ext">
+
+    <!-- Write custom css sytle for amp html here. -->
+    <style amp-custom>
+      body {
+        display: block;
+        background: #fff;
+        overflow-x: hidden;
+        font-family: "Open Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1em;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        webkit-tap-highlight-color: #f50057;
+        color: #37474F;
+        padding: 15px;
+      }
+      h1 {
+        font-size: 24px;
+        font-family: 'Josefin Sans';
+        color: #37474F;
+        margin: 10px 0 0px;
+      }
+      h2.post-job {
+        margin: 0px 0 30px;
+        font-size: 14px;
+      }
+      h2 {
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 1.3;
+        margin: 40px 0 10px;
+        font-family: 'Josefin Sans';
+      }
+      amp-img {
+      }
+      p {
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        font-family: 'Lora',serif;
+      }
+
+      .logo {
+        margin: 0 50px 20px;
+      }
+
+      div.post-body a {
+        font-weight: 700;
+        color: #f50057;
+        /* border-bottom: solid 2px #f50057; */
+        font-family: josefin sans;
+      }
+    </style>
+
+    <%= rails_amp_google_analytics_head %>
+    <%= rails_amp_html_header %>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  </head>
+  <body>
+    <%= rails_amp_google_analytics_page_tracking %>
+    <%= link_to image_tag('logo.svg', title: Settings.description, alt: Settings.description, layout: 'responsive', class: 'logo'), root_path %>
+    <%= yield %>
+  </body>
+</html>

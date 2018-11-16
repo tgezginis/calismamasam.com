@@ -16,7 +16,7 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'puma', '~> 3.10'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '5.1.5'
+gem 'rails', '5.1.6'
 gem 'redis-rails'
 gem 'turkish_support'
 
@@ -71,6 +71,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'sweetalert-rails', github: 'sharshenov/sweetalert-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'rails_amp'
 
 # Chart
 gem 'chartkick'
