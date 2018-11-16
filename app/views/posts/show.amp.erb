@@ -1,0 +1,37 @@
+<%= content_for :html_title, @post.title %>
+<%= content_for :html_description, @post.description unless @post.description.nil? || @post.description == '' %>
+<%= content_for :html_twitter_description, @post.job_and_company %>
+<%= content_for :html_meta_image, @post.image(:full) %>
+<%= content_for :html_meta_post_published_time, @post.published_at, format: :short %>
+
+<% cache ["post", @post.id, @post.updated_at, @post.categories, @post.fetch_post_images, current_user&.id, @post.products] do %>
+  <div class="row post-page">
+    <article class="post col-md-10 col-md-offset-1 container">
+      <%= image_tag(@post.image(:normal), data: {src: @post.image(:full)}, class: 'post-image lazyload blur-up', alt: @post.title, title: @post.title, layout: 'responsive') %>
+
+      <h1><%= @post.title %></h1>
+      <h2 class="post-job"><%= @post.job_and_company %></h2>
+
+      <div class="clearfix"></div>
+      <div class="post-body">
+        <% body = @post.body.split("## Hangi yazılımları kullanıyorsun?") %>
+        <%= markdown body[0] %>
+
+        <% if @post.fetch_post_images.any? %>
+          <amp-carousel layout="responsive"
+            height="300"
+            width="500"
+            type="slides">
+            <% @post.fetch_post_images.each do |image| %>
+              <%= image_tag image.image(:full) %>
+            <% end %>
+          </amp-carousel>
+        <% end %>
+
+        <%= markdown ["## Hangi yazılımları kullanıyorsun?", body[1]].join %>
+      </div>
+
+      <%= render 'stats' %>
+    </article>
+  </div>
+<% end %>
