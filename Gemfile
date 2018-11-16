@@ -16,7 +16,7 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'puma', '~> 3.10'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '5.1.5'
+gem 'rails', '5.1.6'
 gem 'redis-rails'
 gem 'turkish_support'
 
