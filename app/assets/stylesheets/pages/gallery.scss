@@ -41,11 +41,7 @@
     }
 
     &.grid {
-      position: relative;
       .item {
-        display: block;
-        position: absolute;
-        max-width: 380px;
         margin: 10px 10px 0;
         z-index: 1;
 
