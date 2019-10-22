@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/calismamasam.com
 
     docker:
-      - image: circleci/ruby:2.4.2-node
+      - image: circleci/ruby:2.6.5-node
         environment:
           - PGUSER=localhost
           - PGUSER=ubuntu
