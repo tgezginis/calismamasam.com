@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.2'
+ruby '2.6.5'
 
 # Core
 gem 'acts_as_list'
@@ -16,7 +16,7 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'puma', '~> 3.10'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '5.1.6'
+gem 'rails', '5.1.6.2'
 gem 'redis-rails'
 gem 'turkish_support'
 
