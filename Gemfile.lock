@@ -118,7 +118,7 @@ GEM
     cancancan (2.1.2)
     case_transform (0.2)
       activesupport
-    chartkick (3.2.1)
+    chartkick (3.4.0)
     cityhash (0.9.0)
     climate_control (0.2.0)
     cocaine (0.5.8)
